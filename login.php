@@ -10,7 +10,7 @@
     }
 </style>
 
-<link href="images/logo-front.png" rel="shortcut icon" />
+<link href="images/icon.png" rel="shortcut icon" />
         <body >
             <div class="container">
                 <div class="row vertical-offset-100">
@@ -35,7 +35,7 @@
                                         <input class="btn btn-lg btn-success btn-block" type="submit" id="login" value="Login System">
                                     </fieldset>
                                 </form>
-                                <center><small> Copy Right © <a href="http://www.gapura.id/">Gapura.id</a>&nbsp;<?php echo date('Y'); ?></small></center>
+                                <center><small> Copy Right © <a href="http://www.gapura.id/"><font color="#6ebf70">Gapura.id</font></a>&nbsp;<?php echo date('Y'); ?></small></center>
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,29 @@
+<?php
+//error_reporting(0);
+session_start();
+include'class/class_gapura.php';
+include'class/function.php';
+$db = new Database();
+// koneksi ke MySQL via method
+$db->connectMySQL();
+// script untuk user taruh sisi bos hahha semangat untuk kodingya
+$user = new User();
+#$laporan = new laporan();
+$menu = new menu();
+#session nama lengkap
+//$nm_lengkap = $_SESSION['fullname'];
+if (!$user->get_sesi())
+#{
+#header("location:login.php");
+#}
+#if ($_GET['r'] == 'logout')
+#{
+#$user->user_logout();
+#header("location:login.php");
+#}
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +53,7 @@
     <link href="jquery/jquery-ui.css" rel="stylesheet" type="text/css" />  
   <script src="jquery/jquery-ui.js"></script>
   <script src="scripts/aplikasi.js"></script>
-    <link href="images/icon.jpg" rel="shortcut icon" />
+   <link href="images/icon.png" rel="shortcut icon" />
 
 <!--  datepicker -->
   <link rel="stylesheet" href="datepicker/jquery-ui.css">
@@ -71,7 +97,7 @@ $(document).ready(function() {
 <div class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a href="index.php" class="navbar-brand"><font color="#ffffff"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;HRM SYSTEM</font></a>
+          <a href="index.php" class="navbar-brand"><font color="#ffffff"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;<strong>HRM SYSTEM</strong></font></a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -79,30 +105,39 @@ $(document).ready(function() {
           </button>
         </div>
         
-        <div class="navbar-collapse collapse" id="navbar-main">
+         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
-            <li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
-         
-      <li><a href="?r=logout"><span class="glyphicon glyphicon-off " aria-hidden="true"></span>&nbsp;Logout</a></li>
-           <!--
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Setting<span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="themes">
-             
-                <li><a href="index.php?page=pem_show">User</a></li>
-               
-               </ul>
-            </li>
-     
-  
-             <li>
-              <a href="?r=kelompok&pg=kelompok">Kelompok</a>
-            </li>
+          <?php
+        $arrayMenu = $menu->menuNavigasi();
+          if(isset($arrayMenu) && $arrayMenu !=NULL){
+            foreach($arrayMenu as $data){
+      ?>
+              <li class="dropdown">
+   
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon <?php echo $data['icon']?>" aria-hidden="true"></span>&nbsp;<?php echo $data['title']?><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <?php
+            $arraysMenu = $menu->subMenuNavigasi($data['id_menu']);
+            if(isset($arraysMenu) && $arraysMenu !=NULL){
+              foreach($arraysMenu as $data2){
+          ?>
+            <li><a href="?r=<?php echo $data2['folder']?>&pg=<?php echo $data2['link']?>"><span class="glyphicon <?php echo $data2['icon']?>" aria-hidden="true"></span>&nbsp;<?php echo $data2['title']?></a></li>
+            <?php
+              }
+            }
+          ?>
+          </ul>
+
+        </li>
+                  <?php
+              }
+            }
+          ?> 
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
                        <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Hy &nbsp;<strong><?php echo $_SESSION['nm_kelompok'];?> </strong><span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-user " aria-hidden="true"></span>&nbsp;<?php echo $_SESSION['level'];?> &nbsp;<?php echo $_SESSION['nm_lengkap'];?> </strong><span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
                 <li><a href="">About</a></li>
                 <li><a href="?r=logout">Logout</a></li>
@@ -110,7 +145,7 @@ $(document).ready(function() {
             </li>
           </ul>
 
-        -->
+        
 
         </div>
       
@@ -152,7 +187,7 @@ background-color: #030033;
 }
 
   .navbar-default {
-    background-color: #6ebf70;
+    background-color: #a9d157;
     border-color: #dde0e1;
 }
 
@@ -160,16 +195,13 @@ background-color: #030033;
    .dropdown-menu > li > a:focus {
     color: #262626;
    text-decoration: none;
-  background-color: #66CCFF;  /*change color of links in drop down here*/
+  background-color: #87c767;  /*change color of links in drop down here*/
    }
-
  .nav > li > a:hover,
  .nav > li > a:focus {
     text-decoration: none;
     background-color: silver; /*Change rollover cell color here*/
   }
-
-
   .navbar-default .navbar-nav > li > a {
    color: white; /*Change active text color here*/
     }
@@ -181,5 +213,6 @@ background-color: #030033;
     margin: 1em 0;
     padding: 0; 
 }
-
 </style>
+
+

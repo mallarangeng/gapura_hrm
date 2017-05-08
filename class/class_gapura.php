@@ -3,8 +3,8 @@
   class Database {
   private $dbHost="localhost";
   private $dbUser="root";
-  private $dbPass="";
-  private $dbName="limaunsur";
+  private $dbPass="900973";
+  private $dbName="gapura_hrm";
   #private $dbUser="ppgtangb_5unsur";
   #private $dbPass="karnaalloh#354";
   #private $dbName="ppgtangb_limaunsur";
@@ -562,20 +562,19 @@ else{
       $query=mysql_query("UPDATE menu SET title='$title', folder='$folder',link='$link',level='$level',parent='$parent',
         icon='$icon',urut='$urut'  WHERE id_menu='$id_menu'");
     }
-      function menuNavigasi($user){
-        $menu = mysql_query("SELECT * FROM menu WHERE parent='0' AND level='$_SESSION[level]' ORDER BY urut ASC");
+  function menuNavigasi($user){
+    $menu = mysql_query("select * from menu where parent='0'");
+    #$menu = mysql_query("SELECT a.username,b.id_menu,b.baca,b.tulis,c.* FROM ms_user a, ms_menu_user b, ms_menu c WHERE a.username=b.username AND b.id_menu=c.id_menu AND a.username ='$user' AND b.baca='Y' AND c.parent='0' AND a.blokir='N' ORDER BY urut ASC");
     while($row=mysql_fetch_array($menu))
       $data[]=$row;
     if (isset($data)){
       return($data);
     }
   }
-  function subMenuNavigasi($menu){
+  function subMenuNavigasi($menu,$user){
+    //$smenu = mysql_query("select * from ms_menu where parent='$menu' order by urut asc");
     $smenu = mysql_query("select * from menu where parent='$menu'");
-    //$smenu = mysql_query("SELECT a.username,b.id_menu,b.baca,b.tulis,c.* FROM ms_user a, ms_menu_user b, ms_menu c WHERE a.username=b.username AND b.id_menu=c.id_menu AND a.username ='$user' AND b.baca='Y' AND c.parent='$menu' AND a.blokir='N' ORDER BY urut ASC");
     $ada    = mysql_num_rows($smenu);
-    //ini asalah
-    #ini adalah 
     if($ada==0){
       $data[]=$ada;
       if (isset($data)){
