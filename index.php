@@ -1,28 +1,3 @@
-<?php
-//error_reporting(0);
-session_start();
-include'class/class_5u.php';
-include'class/function.php';
-$db = new Database();
-// koneksi ke MySQL via method
-$db->connectMySQL();
-// script untuk user taruh sisi bos hahha semangat untuk kodingya
-$user = new User();
-$laporan = new laporan();
-$detail = new detail();
-$menu = new menu();
-#session nama lengkap
-//$nm_lengkap = $_SESSION['fullname'];
-if (!$user->get_sesi())
-{
-header("location:login.php");
-}
-if ($_GET['r'] == 'logout')
-{
-$user->user_logout();
-header("location:login.php");
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +6,7 @@ header("location:login.php");
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0">
 	<!--<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">-->
-	<title>KBM PPG-TANGBAR</title>
+	<title>HRM Gapura Angkasa</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/dataTables.bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/dataTables.tableTools.css">
@@ -52,7 +27,7 @@ header("location:login.php");
     <link href="jquery/jquery-ui.css" rel="stylesheet" type="text/css" />  
   <script src="jquery/jquery-ui.js"></script>
   <script src="scripts/aplikasi.js"></script>
-    <link href="images/logo.png" rel="shortcut icon" />
+    <link href="images/icon.jpg" rel="shortcut icon" />
 
 <!--  datepicker -->
   <link rel="stylesheet" href="datepicker/jquery-ui.css">
@@ -96,7 +71,7 @@ $(document).ready(function() {
 <div class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a href="index.php" class="navbar-brand"><font class="info_color">LIMA UNSUR</font></a>
+          <a href="index.php" class="navbar-brand"><font color="#ffffff"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;HRM SYSTEM</font></a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -107,17 +82,7 @@ $(document).ready(function() {
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
-             <?php
-            $arrayMenu = $menu->menuNavigasi();
-          if(isset($arrayMenu) && $arrayMenu !=NULL){
-            foreach($arrayMenu as $data){
-          ?>    
-           
-           <li><a href="?r=<?php echo $data['folder']?>&pg=<?php echo $data['link']?>"><span class="glyphicon <?php echo $data['icon']?>" aria-hidden="true"></span>&nbsp;<?php echo $data['title']?></a></li>
-              <?php
-            }
-          }
-      ?>
+         
       <li><a href="?r=logout"><span class="glyphicon glyphicon-off " aria-hidden="true"></span>&nbsp;Logout</a></li>
            <!--
             <li class="dropdown">
@@ -157,9 +122,9 @@ $(document).ready(function() {
     <br>
 <p>
 <br>
-
-<h2 ><small><span class="glyphicon glyphicon-user " aria-hidden="true"></span><strong>&nbsp; <?php echo $_SESSION['level'];?> <?php echo $_SESSION['nm_kelompok'];?> </strong></small></h2><hr>
-  
+<p>
+<img src="images/logo-header.jpg" class="img-responsive">
+<hr>
 		 <?php
                                 if (!isset($_GET['r'])){
                                     include('view/home/dashboard.php');
@@ -169,8 +134,52 @@ $(document).ready(function() {
                                         include "view/".$r.'/'.$pg.".php";
                                 }
                             ?>
-                            <br>
+                            <p><p>
 </div>
-      <div class="well well-sm"><small><i>M5U-TB ver. 1.0 &copy; <a href="https://ppg-tangbar.com/">ppg-tangbar.com</a>&nbsp;<?php echo date('Y'); ?> by ICT Team<br>Technical Support : 0857 1588 7704 (WhatsApp)</i></small></div>
+      <div class="well well-sm"><small> Copy Right © <a href="http://www.gapura.id/"><font color="#6ebf70">Gapura.id</font></a>&nbsp;<?php echo date('Y'); ?></small></div>
       </body>
 </html>
+
+<style type="text/css">
+  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #000;  /*Sets the text hover color on navbar*/
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: white; /*BACKGROUND color for active*/
+background-color: #030033;
+}
+
+  .navbar-default {
+    background-color: #6ebf70;
+    border-color: #dde0e1;
+}
+
+  .dropdown-menu > li > a:hover,
+   .dropdown-menu > li > a:focus {
+    color: #262626;
+   text-decoration: none;
+  background-color: #66CCFF;  /*change color of links in drop down here*/
+   }
+
+ .nav > li > a:hover,
+ .nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+  }
+
+
+  .navbar-default .navbar-nav > li > a {
+   color: white; /*Change active text color here*/
+    }
+    hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+</style>
