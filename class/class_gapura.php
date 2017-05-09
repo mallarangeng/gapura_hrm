@@ -17,21 +17,20 @@
   class User
   {
     
-    function cek_login($id_kelompok, $password) 
+    function cek_login($user_id, $password) 
       {
         #untuk memastikan user id yang di input adalah tipe data integer karena id_kelomok terdiri dari angka
         #untuk salah satu pencegahan sql injection
-        $id_kelompok = (int)$_POST['id_kelompok'];
+        $user_id = (int)$_POST['user_id'];
         $password = md5($password);
-        $result = mysql_query("SELECT * FROM kelompok WHERE id_kelompok='$id_kelompok' AND password='$password'");
+        $result = mysql_query("SELECT * FROM user WHERE user_id='$user_id' AND password='$password'");
         $user_data = mysql_fetch_array($result);
         $no_rows = mysql_num_rows($result);
         if ($no_rows == 1) 
         {
           $_SESSION['login'] = TRUE;
-          $_SESSION['id_kelompok'] = $user_data['id_kelompok'];
-          $_SESSION['nm_kelompok'] = $user_data['nm_kelompok'];
-          $_SESSION['parent'] = $user_data['parent'];
+          $_SESSION['user_id'] = $user_data['user_id'];
+          $_SESSION['nm_lengkap'] = $user_data['nm_lengkap'];
           $_SESSION['level'] = $user_data['level'];
           return TRUE;
         }
@@ -53,6 +52,9 @@
         session_destroy();
       }
     }
+ /**
+ * 
+ */
 
 class Kelompok {
   // Tampilkan data data kelompok

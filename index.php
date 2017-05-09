@@ -13,14 +13,14 @@ $menu = new menu();
 #session nama lengkap
 //$nm_lengkap = $_SESSION['fullname'];
 if (!$user->get_sesi())
-#{
-#header("location:login.php");
-#}
-#if ($_GET['r'] == 'logout')
-#{
-#$user->user_logout();
-#header("location:login.php");
-#}
+{
+header("location:login.php");
+}
+if ($_GET['r'] == 'logout')
+{
+$user->user_logout();
+header("location:login.php");
+}
 ?>
 
 
@@ -159,6 +159,7 @@ $(document).ready(function() {
 <br>
 <p>
 <img src="images/logo-header.jpg" class="img-responsive">
+
 <hr>
 		 <?php
                                 if (!isset($_GET['r'])){

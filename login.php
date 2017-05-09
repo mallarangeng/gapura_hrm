@@ -1,3 +1,28 @@
+<?php  
+error_reporting(0);
+session_start();
+include_once'class/class_gapura.php';
+// instance objek db dan user
+$user = new User();
+$db = new Database();
+// koneksi ke MySQL via method
+$db->connectMySQL();
+// cek apakah user login atau tidak via method
+if($user->get_sesi()) {
+  header("location:index.php");
+}
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $login=$user->cek_login($_POST['user_id'], $_POST['password']);
+  if($login) {
+     // login sukses, arahkan ke file index.php
+    header("location:index.php");
+  }
+  else {
+  // login gagal, beri peringatan dan kembali ke file index.php
+ header("location:login.php?r=error");
+  }
+}
+?>
 <title>HRM Gapura Angkasa</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -29,7 +54,7 @@
                                         <label class="panel-login">
                                             <div class="login_result"></div>
                                         </label>
-                                        <input class="form-control" placeholder="USER ID" id="username" name="id_kelompok" type="text" required>
+                                        <input class="form-control" placeholder="USER ID" id="username" name="user_id" type="text" required>
                                         <input class="form-control" placeholder="PASSWORD" id="password" name="password" type="password" required>
                                         
                                         <input class="btn btn-lg btn-success btn-block" type="submit" id="login" value="Login System">

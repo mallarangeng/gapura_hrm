@@ -67,9 +67,9 @@ header("location:index.html");
   </div>
    
   <div class="form-group">
-    <input type="submit" name="simpan" value="Simpan" class="btn btn-info">
+    <input type="submit" name="simpan" value="Simpan" class="btn btn-success">
     &nbsp;
-     <input type="button" name="batal" value="Batal"  onClick="history.back()" class="btn btn-danger">
+     <input type="button" name="batal" value="Batal"  onClick="history.back()" class="btn btn-warning">
   </div>
 </form>
 

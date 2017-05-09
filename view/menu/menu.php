@@ -54,4 +54,4 @@ header("location:index.html");
     </tbody>
   </table>
 </div>
- <a class="btn btn-info btn-xs" href="?r=menu&pg=menu_form" role="button">Tambah Menu</a>
+ <a class="btn btn-success btn-xs" href="?r=menu&pg=menu_form" role="button">Tambah Menu</a>
