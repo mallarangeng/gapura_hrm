@@ -2,7 +2,7 @@
   error_reporting(0);
   class Database {
   private $dbHost="localhost";
-  private $dbUser="root";
+  private $dbUser="hendri";
   private $dbPass="900973";
   private $dbName="gapura_hrm";
   #private $dbUser="ppgtangb_5unsur";

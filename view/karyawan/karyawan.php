@@ -4,6 +4,7 @@ $db = new Database();
 $db->connectMySQL();
 #cegah akses tanpa melalui login
 $user = new User();
+$menu = new menu();
 $user_id = $_SESSION['user_id'];
 if (!$user->get_sesi())
 {
@@ -12,12 +13,8 @@ header("location:index.html");
 #close akses tanpa login
 ?>
 <body>
-<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <span class="glyphicon glyphicon-user" aria-hidden="true"></span><strong>&nbsp;MASTER DATA KARYAWAN&nbsp;</strong>
-</div>
-  <button type="button" class="btn btn-info add-karyawan" data-id="<?php echo $_SESSION['user_id'];?>">TAMBAH DATA</button>
-<a class="btn btn-success" href="view/generus/cetak.php" target="_blank">CETAK DATA KARYAWAN</a>
+  <button type="button" class="btn btn-success btn-sm add-karyawan" data-id="<?php echo $_SESSION['user_id'];?>">TAMBAH DATA</button>
+<a class="btn btn-warning btn-sm" href="view/generus/cetak.php" target="_blank">CETAK DATA KARYAWAN</a>
   <hr>
   <div class="table-responsive">
  <table id="example" class="table table-striped table-bordered">
@@ -34,9 +31,15 @@ header("location:index.html");
         <th>TGL INPUT</th>
         <th>TGL UPDATE</th>
         <th>AKSI</th>
+        <th>AKSI</th>
       </tr>
     </thead>
     <tbody>
+      <?php
+      $arraymenu=$menu->tampilmenu();
+      if (count($arraymenu)) {
+      foreach($arraymenu as $data) {
+    ?>
       <tr>
        <td><?php echo $d['nig']; ?></td>
         <td><a href="" class="detail-generus" data-id="<?php echo $d['nig']; ?>"><?php echo $d['nama']; ?><a></td>
@@ -49,8 +52,30 @@ header("location:index.html");
         <td><small><?php echo $d['date_input']; ?></small></td>
         <td><small><?php echo $d['date_update']; ?></small></td>
         <td>
-          <a  class="btn btn-warning btn-xs" href="?r=generus&pg=generus_view&nig=<?php echo $d['nig']; ?>">Ubah</a></td>
+     <!-- Split button -->
+<div class="btn-group">
+        <button type="button" class="btn btn-success btn-xs">Action</button>
+        <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#"></a></li>
+          <li><a href="#">Dokumen Peringatan</a></li>
+          <li><a href="#">Dokumen Penilayan</a></li>
+          <li><a href="#">Dokumen Training</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Dokumen Lembur</a></li>
+        </ul>
+</div>
+</td>
+<td></td>
       </tr>
+      <?php 
+}
+}
+
+      ?>
     </tbody>
   </table>
   </div>
