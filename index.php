@@ -8,10 +8,10 @@ $db = new Database();
 $db->connectMySQL();
 // script untuk user taruh sisi bos hahha semangat untuk kodingya
 $user = new User();
-#$laporan = new laporan();
+$jabatan = new jabatan();
 $menu = new menu();
 #session nama lengkap
-//$nm_lengkap = $_SESSION['fullname'];
+$user_id = $_SESSION['user_id'];
 if (!$user->get_sesi())
 {
 header("location:login.php");
@@ -172,7 +172,7 @@ $(document).ready(function() {
                             ?>
                             <p><p>
 </div>
-      <div class="well well-sm"><small> Copy Right © <a href="http://www.gapura.id/"><font color="#6ebf70">Gapura.id</font></a>&nbsp;<?php echo date('Y'); ?></small></div>
+      <div class="well well-sm"><small> Copy Right © <a href="http://www.gapura.id/"><font color="#6ebf70">hendrimamang@gmail.com</font></a>&nbsp;<?php echo date('Y'); ?></small></div>
       </body>
 </html>
 

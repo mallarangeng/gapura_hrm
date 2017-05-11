@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             </div>
                             <br>
-                            <center><strong>HUMAN RESOURCE DEPARTEMENT INFORMATION SISTEM</strong></center>
+                            <center><strong>HUMAN RESOURCE MANAGEMENT INFORMATION SISTEM</strong></center>
                             <div class="panel-body">
                                   <form accept-charset="UTF-8" action="?op=in" method="post" role="form" class="form-signin">
                                     <fieldset>
@@ -60,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <input class="btn btn-lg btn-success btn-block" type="submit" id="login" value="Login System">
                                     </fieldset>
                                 </form>
-                                <center><small> Copy Right © <a href="http://www.gapura.id/"><font color="#6ebf70">Gapura.id</font></a>&nbsp;<?php echo date('Y'); ?></small></center>
+                                <center><small> Copy Right © <a href="http://www.gapura.id/"><font color="#6ebf70">hendrimamang@gmail.com</font></a>&nbsp;<?php echo date('Y'); ?></small></center>
                             </div>
                         </div>
                     </div>

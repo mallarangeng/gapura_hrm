@@ -56,10 +56,10 @@
  * 
  */
 
-class Kelompok {
+class Jabatan {
   // Tampilkan data data kelompok
-  function tampilKelompok() {
-          $query = mysql_query("Select k1.*,k2.nm_kelompok as desa from kelompok as k1 left join kelompok as k2 on k1.parent= k2.id_kelompok ORDER BY parent");
+  function tampilJabatan() {
+          $query = mysql_query("SELECT * FROM jabatan ORDER BY id_jabatan");
           while($row=mysql_fetch_array($query))
           $data[]=$row;
           return $data;
@@ -340,76 +340,107 @@ else{
     
   }
   /**
-  * 
+  * kelola file file lampiran karyawan
   */
   /**
   * 
-  */
-  class Conten 
+  */class Datafile  {
+        function tambahDatafile($nik,$nama_file,$gambar)
+          {
+            $query="INSERT INTO datafile(nik,nama_file,gambar)
+            VALUES('$nik','$nama_file','$gambar')";
+            move_uploaded_file($_FILES['gambar']['tmp_name'],"file_karyawan/".$gambar);
+            $hasil= mysql_query($query);
+          }
+  //menampilkan file 
+        function tampilDatafile($nik) {
+            $query = mysql_query("SELECT * FROM datafile WHERE nik='$_GET[nik]'");
+              while($row=mysql_fetch_array($query))
+              $data[]=$row;
+            return $data;
+        }
+  //Baca data file
+  function bacaDatafile ($field,$kode_file){
+  $query=mysql_query("SELECT * FROM datafile WHERE kode_file='$kode_file'");
+  $data=mysql_fetch_array($query);
+  if ($field == 'kode_file') return $data['kode_file'];
+  else if ($field == 'kontrak_id') return $data['kontrak_id'];
+  else if ($field == 'nama_file') return $data['nama_file'];
+  else if ($field == 'gambar') return $data['gambar'];
+  }
+  //update data file
+  function updateDatafile ($kode_file,$kontrak_id,$nama_file,$gambar){
+  if (empty($gambar)){
+  $query=mysql_query("UPDATE datafile SET
+  kontrak_id='$kontrak_id',nama_file='$nama_file'WHERE kode_file='$kode_file'");
+  $hasil= mysql_query($query);
+   echo"<meta http-equiv='refresh' content='0;url=?page=datafile/file_view&kontrak_id=".$_GET['kontrak_id']."'>";
+  }
+  else 
   {
-    
-     function tambahKonten($id,$judul,$kategori,$conten,$tgl,$publish,$label)
-    {
-      $query="INSERT INTO conten (id,judul,kategori,conten,tgl,publish,label)
-      VALUES('$id','$judul','$kategori','$conten','$tgl','$publish','$label')";
-      $hasil= mysql_query($query);
-    }
-    function tampilKall() {
-      $query = mysql_query("SELECT * FROM conten");
-      while($row=mysql_fetch_array($query))
-      $data[]=$row;
-      return $data;
-    }
-    function tampilKinfo() {
-      $query = mysql_query("SELECT * FROM conten WHERE kategori='info'");
-      while($row=mysql_fetch_array($query))
-      $data[]=$row;
-      return $data;
-    }
-
-    function tampilKartikel() {
-      $query = mysql_query("SELECT * FROM conten WHERE kategori='Artikel'");
-      while($row=mysql_fetch_array($query))
-      $data[]=$row;
-      return $data;
-    }
-    function bacaP($id)
-          {
-        $query=mysql_query("SELECT * FROM conten WHERE id='1' AND publish='Y'");
-        $data=mysql_fetch_array($query);
-        $data[]=$row;
-        if(isset($data)){
-          return $data;
-        }
-      }
-       function bacaPe($id)
-          {
-        $query=mysql_query("SELECT * FROM conten WHERE id='1'");
-        $data=mysql_fetch_array($query);
-        $data[]=$row;
-        if(isset($data)){
-          return $data;
-        }
-      }
-      function bacaK($id)
-          {
-        $query=mysql_query("SELECT * FROM conten WHERE id='$_GET[id]'");
-        $data=mysql_fetch_array($query);
-        $data[]=$row;
-        if(isset($data)){
-          return $data;
-        }
-      }
-      function updateK ($id,$judul,$kategori,$conten,$tgl,$publish,$label)
-    {
-      $query=mysql_query("UPDATE conten SET judul='$judul', kategori='$kategori', conten='$conten',tgl='$tgl',publish='$publish', label='$label'  WHERE id='$id'");
-    }
-
+  $query=mysql_query("UPDATE datafile SET
+  kontrak_id='$kontrak_id',nama_file='$nama_file',gambar='$gambar' WHERE kode_file='$kode_file'");
+  move_uploaded_file($_FILES['gambar']['tmp_name'],"file_gambar/".$gambar);
+  $hasil= mysql_query($query);
+   echo"<meta http-equiv='refresh' content='0;url=?page=datafile/file_view&kontrak_id=".$_GET['kontrak_id']."'>";
+  }
+  }
   }
   /**
   * 
+
   */
-  class Generus
+
+  /**
+  * 
+  */
+  class Training 
+  {
+    
+    function tampilKategoriT()
+    {
+       $query = mysql_query("SELECT * FROM kat_training");
+      while($row=mysql_fetch_array($query))
+      $data[]=$row;
+      return $data;
+    }
+     function addTraining($id_training,$id_kat,$nik,$keterangan,$tgl_awal,$tgl_akhir,$nilai)
+    {
+      $query="INSERT INTO training (id_training,id_kat,nik,keterangan,tgl_awal,tgl_akhir,nilai)
+      VALUES ('$id_training','$id_kat','$nik','$keterangan','$tgl_awal','$tgl_akhir','$nilai')";
+      $hasil= mysql_query($query);  
+    }
+        function tampilTraining() {
+      $query = mysql_query("SELECT a.*,b.*,c.* FROM training a, karyawan b, kat_training c WHERE a.nik=b.nik AND a.id_kat=c.id_kat");
+      while($row=mysql_fetch_array($query))
+      $data[]=$row;
+      return $data;
+    }
+  }
+    class Sp 
+  {
+    
+    function tampilKategoriT()
+    {
+       $query = mysql_query("SELECT * FROM kat_training");
+      while($row=mysql_fetch_array($query))
+      $data[]=$row;
+      return $data;
+    }
+     function addSp($id_peringatan,$nik,$tanggal,$ke,$keterangan)
+    {
+      $query="INSERT INTO peringatan (id_peringatan,nik,tanggal,ke,keterangan)
+      VALUES ('$id_peringatan','$nik','$tanggal','$ke','$keterangan')";
+      $hasil= mysql_query($query);  
+    }
+        function tampilTraining() {
+      $query = mysql_query("SELECT a.*,b.*,c.* FROM training a, karyawan b, kat_training c WHERE a.nik=b.nik AND a.id_kat=c.id_kat");
+      while($row=mysql_fetch_array($query))
+      $data[]=$row;
+      return $data;
+    }
+  }
+  class Karyawan
   {
     
     function tampilKategori() {
@@ -418,25 +449,25 @@ else{
       $data[]=$row;
       return $data;
     }
-      function bacaGenerus($nig)
+      function bacaKaryawan($nik)
           {
-        $query=mysql_query("SELECT a.*,b.alamat as alamatk,c.* FROM generus a, kelompok b, kategori c WHERE a.id_kelompok=b.id_kelompok AND a.id_kat=c.id_kat AND a.nig='$_GET[nig]'");
+        $query=mysql_query("SELECT a.*,b.*,c.* FROM karyawan a, user b, jabatan c WHERE a.user_id=b.user_id AND a.id_jabatan=c.id_jabatan AND a.nik='$_GET[nik]'");
         $data=mysql_fetch_array($query);
         $data[]=$row;
         if(isset($data)){
           return $data;
         }
       }
-    function tampilGenerus() {
-      $query = mysql_query("SELECT a.*,b.*,c.* FROM generus a, kelompok b, kategori c WHERE a.id_kelompok=b.id_kelompok AND a.id_kat=c.id_kat");
+    function tampilKaryawan() {
+      $query = mysql_query("SELECT a.*,b.*,c.* FROM karyawan a, user b, jabatan c WHERE a.user_id=b.user_id AND a.id_jabatan=c.id_jabatan");
       while($row=mysql_fetch_array($query))
       $data[]=$row;
       return $data;
     }
-    function tambahGenerus($nig,$id_kelompok,$nama,$tempat_lahir,$tgl_lahir,$jekel,$gol_darah,$alamat,$nohp,$nm_ayah,$nm_ibu,$id_kat,$foto,$date_input,$date_update)
+    function tambahKaryawan($nik,$user_id,$nama,$tempat_lahir,$tgl_lahir,$jekel,$alamat,$agama,$no_hp,$tgl_masuk,$tgl_efektif,$tgl_keluar,$id_jabatan,$status_kerja,$tgl_pensiun,$catatan,$foto,$date_input,$date_update)
     {
-      $query="INSERT INTO generus (nig,id_kelompok,nama,tempat_lahir,tgl_lahir,jekel,gol_darah,alamat,nohp,nm_ayah,nm_ibu,id_kat,foto,date_input,date_update)
-      VALUES('$nig','$id_kelompok','$nama','$tempat_lahir','$tgl_lahir','$jekel','$gol_darah','$alamat','$nohp','$nm_ayah','$nm_ibu','$id_kat','$foto','$date_input','$date_update')";
+      $query="INSERT INTO karyawan (nik,user_id,nama,tempat_lahir,tgl_lahir,jekel,alamat,agama,no_hp,tgl_masuk,tgl_efektif,tgl_keluar,id_jabatan,status_kerja,tgl_pensiun,catatan,foto,date_input,date_update)
+      VALUES('$nik','$user_id','$nama','$tempat_lahir','$tgl_lahir','$jekel','$alamat','$agama','$no_hp','$tgl_masuk','$tgl_efektif','$tgl_keluar','$id_jabatan','$status_kerja','$tgl_pensiun','$catatan','$foto','$date_input','$date_update')";
       move_uploaded_file($_FILES['foto']['tmp_name'],"file_foto/".$foto);
       $hasil= mysql_query($query);
     }
