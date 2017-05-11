@@ -149,7 +149,7 @@ header("location:index.html");
                   $_POST['tanggal'],
                   $_POST['ke'],
                   $_POST['keterangan']);
-                   echo"<meta http-equiv='refresh' content='0;url=?r=karyawan&pg=karyawan_dokumen'>";  
+                   echo"<meta http-equiv='refresh' content='0;url=?r=sp&pg=sp'>";  
                   }
                 ?>
 

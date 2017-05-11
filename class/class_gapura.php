@@ -433,11 +433,24 @@ else{
       VALUES ('$id_peringatan','$nik','$tanggal','$ke','$keterangan')";
       $hasil= mysql_query($query);  
     }
-        function tampilTraining() {
-      $query = mysql_query("SELECT a.*,b.*,c.* FROM training a, karyawan b, kat_training c WHERE a.nik=b.nik AND a.id_kat=c.id_kat");
+        function tampilSp() {
+      $query = mysql_query("SELECT a.*,b.*,c.* FROM peringatan a, karyawan b, jabatan c WHERE a.nik=b.nik AND b.id_jabatan=c.id_jabatan");
       while($row=mysql_fetch_array($query))
       $data[]=$row;
       return $data;
+    }
+      function bacaSp($id_peringatan)
+          {
+        $query=mysql_query("SELECT a.*,b.*,c.* FROM peringatan a, karyawan b, jabatan c WHERE a.nik=b.nik AND b.id_jabatan=c.id_jabatan AND id_peringatan='$_GET[id_peringatan]'");
+        $data=mysql_fetch_array($query);
+        $data[]=$row;
+        if(isset($data)){
+          return $data;
+        }
+      }
+     function updateSp ($id_peringatan,$nik,$tanggal,$ke,$keterangan)
+    {
+      $query=mysql_query("UPDATE peringatan SET nik='$nik', tanggal='$tanggal',ke='$ke',keterangan='$keterangan'WHERE id_peringatan='$id_peringatan'");
     }
   }
   class Karyawan

@@ -56,12 +56,12 @@
                 );
             });
 
-                $(document).on('click','.add-laporan',function(e){
+                $(document).on('click','.edit-sp',function(e){
                 e.preventDefault();
-                $("#modal-add-laporan").modal('show');
-                 $(".modal-title").html('TAMBAHKAN LAPORAN');
-                $.get("view/laporan/laporan_form_modal.php",
-                {id_info:$(this).attr('data-id')},
+                $("#modal-edit-sp").modal('show');
+                 $(".modal-title").html('UBAH SURAT PERINGATAN');
+                $.get("view/sp/sp_ubah.php",
+                {id_peringatan:$(this).attr('data-id')},
                  function(html){
                         $(".modal-body").html(html);
                     }   
