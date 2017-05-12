@@ -416,6 +416,19 @@ else{
       $data[]=$row;
       return $data;
     }
+      function bacaTraining($id_training)
+          {
+        $query=mysql_query("SELECT a.*,b.*,c.* FROM training a, karyawan b, kat_training c WHERE a.nik=b.nik AND a.id_kat=c.id_kat AND id_training='$_GET[id_training]'");
+        $data=mysql_fetch_array($query);
+        $data[]=$row;
+        if(isset($data)){
+          return $data;
+        }
+      }
+         function updateTraining ($id_training,$id_kat,$nik,$keterangan,$tgl_awal,$tgl_akhir,$nilai)
+    {
+      $query=mysql_query("UPDATE training SET id_kat='$id_kat', nik='$nik', keterangan='$keterangan',tgl_awal='$tgl_awal',tgl_akhir='$tgl_akhir' WHERE id_training='$id_training'");
+    }
   }
     class Sp 
   {

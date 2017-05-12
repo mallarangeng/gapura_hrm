@@ -37,12 +37,13 @@ $dk= $karyawan->bacaKaryawan($nik);
                                         </div>
                                       </div>   
                                       <label>Tanggal Surat Peringatan</label>
+                                       <label>Tanggal Surat Peringatan</label>
                                       <div class="form-group">
-                                      <div class="col-sm-6">
-                                          <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" class="form-control" readonly>
-                                        
-                                    </div>
-                                    </div>
+                                         <div class="col-sm-6">
+                                        <div class="input-group date form_date">
+                                        <input class="form-control" size="" name="tanggal" type="text" readonly>           
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
                                         
                                          <label>Peringatan Ke :</label>
                                       <div class="form-group">

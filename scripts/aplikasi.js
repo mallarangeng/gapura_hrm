@@ -55,6 +55,17 @@
                     }   
                 );
             });
+                $(document).on('click','.ubah-training',function(e){
+                e.preventDefault();
+                $("#modal-ubah-training").modal('show');
+                $(".modal-title").html('FORM TRAINING');
+                $.get("view/training/training_ubah.php",
+                    {id_training:$(this).attr('data-id')},
+                    function(html){
+                        $(".modal-body").html(html);
+                    }   
+                );
+            });
                 $(document).on('click','.form-sp',function(e){
                 e.preventDefault();
                 $("#modal-sp").modal('show');

@@ -36,12 +36,11 @@ $d= $sp->bacaSp($id_peringatan);
                                       <label>Tanggal Surat Peringatan</label>
                                       <div class="form-group">
                                          <div class="col-sm-6">
-                      <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input11" data-link-format="yyyy-mm-dd">
-                      <input class="form-control" size="" type="text" value="" readonly>           
-                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                      </div>
-                      <input type="hidden" name="tanggal" value="" id="dtp_input11" required>
-                  </div>
+                                        <div class="input-group date form_date">
+                                        <input class="form-control" size="" name="tanggal" type="text" value="<?php echo $d['tanggal']; ?>" readonly>           
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                    </div>
                                       </div>   
                                          <label>Peringatan Ke :</label>
                                       <div class="form-group">
