@@ -61,12 +61,20 @@ $dk= $karyawan->bacaKaryawan($nik);
                                       <!-- Text input-->
                                       <div class="form-group">
                                         <div class="col-sm-6">
-                                          <input type="text" name="tgl_awal" placeholder="Tanggal Mulai" class="form-control" value="<?php echo date('Y-m-d'); ?>" required>
+                                        <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input1" data-link-format="yyyy-mm-dd">
+                                        <input class="form-control" size="" type="text" value="" readonly>           
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                         </div>
+                                      <input type="hidden" name="tgl_awal" value="" id="dtp_input1" required>
+                                    </div>
 
-                                        <div class="col-sm-6"> 
-                                          <input type="text" name="tgl_akhir" placeholder="Tanggal Selesai" class="form-control" value="<?php echo date('Y-m-d'); ?>" required>
+                                            <div class="col-sm-6">
+                                        <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                        <input class="form-control" size="" type="text" value="" readonly>           
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                         </div>
+                                      <input type="hidden" name="tgl_akhir" value="" id="dtp_input2" required>
+                                    </div>
                                       </div>
                                          <label>Nilai - Hasil Training</label>
                                       <div class="form-group">
@@ -80,3 +88,4 @@ $dk= $karyawan->bacaKaryawan($nik);
                                 </div>
 </body>
 </html>
+<?php include('../../scripts/date_bootsrap_script.php'); ?>

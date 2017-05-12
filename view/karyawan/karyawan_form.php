@@ -191,12 +191,17 @@ $karyawan = new karyawan;
                                           </select>
                                         </div>
                                       </div>
-                                      <label>Tanggal Pensiun</label>
-                                      <div class="form-group">
-                                        <div class="col-sm-6">
-                                          <input type="text" name="tgl_pensiun" value="<?php echo date('Y-m-d') ?>" class="form-control" required>
+                                           <label>Tanggal Pensiun</label>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input5" data-link-format="yyyy-mm-dd">
+                                        <input class="form-control" size="" type="text" value="" readonly>           
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                         </div>
-                                      </div>
+                                      <input type="hidden" name="tgl_pensiun" value="" id="dtp_input5" required>
+                                    </div>
+                              </div>
+                                      
                                       <label>Catatan Mengenai Karyawan</label>
                                       <div class="form-group">
                                         <div class="col-sm-10">
@@ -242,7 +247,5 @@ $karyawan = new karyawan;
     cursor: inherit;
     display: block;
 }
-
-
 </style>
-<?php include('date_boostrap_script.php'); ?>
+<?php include('../../scripts/date_bootsrap_script.php'); ?>

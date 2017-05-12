@@ -38,10 +38,12 @@ $dk= $karyawan->bacaKaryawan($nik);
                                       </div>   
                                       <label>Tanggal Surat Peringatan</label>
                                       <div class="form-group">
-                                        <div class="col-sm-6">
-                                          <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" class="form-control" required>
-                                        </div>
-                                      </div>   
+                                      <div class="col-sm-6">
+                                          <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" class="form-control" readonly>
+                                        
+                                    </div>
+                                    </div>
+                                        
                                          <label>Peringatan Ke :</label>
                                       <div class="form-group">
                                         <div class="col-sm-4">
@@ -65,3 +67,4 @@ $dk= $karyawan->bacaKaryawan($nik);
                                 </div>
                             </body>
                             </html>
+                    <?php include('../../scripts/date_bootsrap_script.php'); ?>

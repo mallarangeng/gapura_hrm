@@ -16,6 +16,7 @@ header("location:index.html");
 #close akses tanpa login
 ?>
 <body>
+
   <button type="button" class="btn btn-success btn-sm add-karyawan" data-id="<?php echo $_SESSION['user_id'];?>">TAMBAH DATA</button>
 <a class="btn btn-warning btn-sm" href="view/generus/cetak.php" target="_blank">CETAK DATA KARYAWAN</a>
   <hr>
