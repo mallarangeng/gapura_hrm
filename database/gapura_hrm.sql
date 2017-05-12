@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2017 at 06:04 PM
--- Server version: 5.6.24
+-- Generation Time: 12 Mei 2017 pada 03.36
+-- Versi Server: 5.6.24
 -- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datafile`
+-- Struktur dari tabel `datafile`
 --
 
 CREATE TABLE IF NOT EXISTS `datafile` (
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `datafile` (
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `datafile`
+-- Dumping data untuk tabel `datafile`
 --
 
 INSERT INTO `datafile` (`kode_file`, `nik`, `nama_file`, `gambar`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `datafile` (`kode_file`, `nik`, `nama_file`, `gambar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jabatan`
+-- Struktur dari tabel `jabatan`
 --
 
 CREATE TABLE IF NOT EXISTS `jabatan` (
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `jabatan` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `jabatan`
+-- Dumping data untuk tabel `jabatan`
 --
 
 INSERT INTO `jabatan` (`id_jabatan`, `nm_jabatan`, `ket`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `jabatan` (`id_jabatan`, `nm_jabatan`, `ket`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karyawan`
+-- Struktur dari tabel `karyawan`
 --
 
 CREATE TABLE IF NOT EXISTS `karyawan` (
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `karyawan`
+-- Dumping data untuk tabel `karyawan`
 --
 
 INSERT INTO `karyawan` (`nik`, `user_id`, `nama`, `tempat_lahir`, `tgl_lahir`, `jekel`, `alamat`, `agama`, `no_hp`, `tgl_masuk`, `tgl_efektif`, `tgl_keluar`, `id_jabatan`, `status_kerja`, `tgl_pensiun`, `catatan`, `foto`, `date_input`, `date_update`) VALUES
@@ -107,7 +107,7 @@ INSERT INTO `karyawan` (`nik`, `user_id`, `nama`, `tempat_lahir`, `tgl_lahir`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kat_training`
+-- Struktur dari tabel `kat_training`
 --
 
 CREATE TABLE IF NOT EXISTS `kat_training` (
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `kat_training` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kat_training`
+-- Dumping data untuk tabel `kat_training`
 --
 
 INSERT INTO `kat_training` (`id_kat`, `nm_kat`, `ket`) VALUES
@@ -128,7 +128,7 @@ INSERT INTO `kat_training` (`id_kat`, `nm_kat`, `ket`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- Struktur dari tabel `menu`
 --
 
 CREATE TABLE IF NOT EXISTS `menu` (
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menu`
+-- Dumping data untuk tabel `menu`
 --
 
 INSERT INTO `menu` (`id_menu`, `title`, `folder`, `link`, `level`, `parent`, `icon`, `urut`) VALUES
@@ -160,14 +160,14 @@ INSERT INTO `menu` (`id_menu`, `title`, `folder`, `link`, `level`, `parent`, `ic
 (14, 'Dokumen Penilaian', 'apply', 'apply_data', 'HRD', 15, 'glyphicon-send', 3),
 (15, 'Dokumen', 'apply', 'apply', 'HRD', 0, 'glyphicon-th-list', 4),
 (16, 'Dokumen Lembur', 'apply', 'apply', 'HRD', 15, 'glyphicon-blackboard', 2),
-(17, 'Hendri', 'Hendri', 'Hendri', 'HRD', 0, 'glyphicon glyphicon-time', 5),
+(17, 'Jabatan', 'jabatan', 'jabatan', 'HRD', 7, 'glyphicon glyphicon-time', 5),
 (18, 'Dokumen Training', 'training', 'training', 'HRD', 15, 'glyphicon glyphicon-ok', 1),
 (19, 'Dokumen Karyawan', 'karyawan', 'karyawan_dokumen', 'HRD', 15, 'glyphicon-user', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `peringatan`
+-- Struktur dari tabel `peringatan`
 --
 
 CREATE TABLE IF NOT EXISTS `peringatan` (
@@ -179,17 +179,21 @@ CREATE TABLE IF NOT EXISTS `peringatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `peringatan`
+-- Dumping data untuk tabel `peringatan`
 --
 
 INSERT INTO `peringatan` (`id_peringatan`, `nik`, `tanggal`, `ke`, `keterangan`) VALUES
-('SP00001', '2017000001', '2017-05-11', '2', 'kakkakakak akakkaak kakakak kakakaka kakkakakak '),
-('SP00002', '2017000002', '2017-05-11', '1', ' Surat peringatan ini bertujuan untuk memberikan pengarahan sekaligus sebagai peringatan kepada yang bersangkutan agar kembali menjalankan tata tertib perusahaan yang berlaku dan tidak mengulangi kesalahan yang sama. Dan apabila mengulangi kesalahan yang sama maka akan diberlakukan tindakan yang sesuai dengan ketentuan peraturan perusahaan yang berlaku.\r\n\r\nSehubungan dengan pelanggaran yang terjadi maka perusahaan memberikan sanksi kepada yang bersangkutan berupa pemotongan tunjangan kehadiran selama 3x. Sanksi ini mulai diberlakukan sejak dibuatnya surat peringatan ini sampai bulan Juni 2016.');
+('SP00001', '2017000001', '2017-05-11', '2', 'Sering di temukan melakukan pelangaran yang di lakukan secara bersama sama dengan temanya sehingga membuat perusahaan rugi miliaran rupiah'),
+('SP00002', '2017000002', '2017-05-11', '1', ' Surat peringatan ini bertujuan untuk memberikan pengarahan sekaligus sebagai peringatan kepada yang bersangkutan agar kembali menjalankan tata tertib perusahaan yang berlaku dan tidak mengulangi kesalahan yang sama. Dan apabila mengulangi kesalahan yang sama maka akan diberlakukan tindakan yang sesuai dengan ketentuan peraturan perusahaan yang berlaku.\r\n\r\nSehubungan dengan pelanggaran yang terjadi maka perusahaan memberikan sanksi kepada yang bersangkutan berupa pemotongan tunjangan kehadiran selama 3x. Sanksi ini mulai diberlakukan sejak dibuatnya surat peringatan ini sampai bulan Juni 2016.'),
+('SP00003', '2017000001', '2017-05-11', '2', 'Di beri sp 3 karena telah melakukan pelanggaran berupa keterlambatan masuk kerja pada tanggal berikut ini dan jika masi di ulangi makan akan kekanekan sp selanjutnya'),
+('SP00004', '2017000002', '2017-05-11', '1', 'Memberikan peringatan kepada sodara karena telah melakukan pelanggartan berupa perbuatan yang tidak seharusnya di lakukan'),
+('SP00005', '2017000004', '2017-05-11', '1', 'Sehubungan dengan pelanggaran yang terjadi maka perusahaan memberikan sanksi kepada yang bersangkutan berupa pemotongan tunjangan kehadiran selama 3x. Sanksi ini mulai diberlakukan sejak dibuatnya surat peringatan ini sampai bulan Juni 2016.'),
+('SP00006', '2017000004', '2017-05-11', '2', 'Sehubungan dengan pelanggaran yang terjadi maka perusahaan memberikan sanksi kepada yang bersangkutan berupa pemotongan tunjangan kehadiran selama 3x. Sanksi ini mulai diberlakukan sejak dibuatnya surat peringatan ini sampai bulan Juni 2016. 2');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `training`
+-- Struktur dari tabel `training`
 --
 
 CREATE TABLE IF NOT EXISTS `training` (
@@ -203,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `training` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `training`
+-- Dumping data untuk tabel `training`
 --
 
 INSERT INTO `training` (`id_training`, `id_kat`, `nik`, `keterangan`, `tgl_awal`, `tgl_akhir`, `nilai`) VALUES
@@ -211,12 +215,13 @@ INSERT INTO `training` (`id_training`, `id_kat`, `nik`, `keterangan`, `tgl_awal`
 ('T0002', 2, '2017000002', 'Training keselamatan kerja', '2017-05-11', '2017-05-30', '10'),
 ('T0003', 2, '2017000003', 'Training keselamatan kerja', '2017-05-11', '2017-05-30', '100'),
 ('T0004', 3, '2017000004', 'Keselamatan Kerja', '2017-05-11', '2017-05-30', '100'),
-('T0005', 1, '2017000001', 'Pelatihan Perpajakan', '2017-05-11', '2017-06-11', '100');
+('T0005', 1, '2017000001', 'Pelatihan Perpajakan', '2017-05-11', '2017-06-11', '100'),
+('T0006', 3, '2017000005', 'Pelatihan Sumberdaya manusia dan pemanfaatan tenaga kerja', '2017-05-11', '2017-06-01', '100');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -230,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`user_id`, `nm_lengkap`, `email`, `telp`, `level`, `date_reg`, `password`) VALUES
