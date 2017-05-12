@@ -120,24 +120,35 @@ $karyawan = new karyawan;
                                       <!-- Form Name -->
                                       <label>Tanggal Masuk</label>
                                       <!-- Text input-->
-                                      <div class="form-group">
-                                        <div class="col-sm-6">
-                                          <input type="text" name="tgl_masuk" value="<?php echo date('Y-m-d') ?>" class="form-control" required>
-                                        </div>
-                              
-                                      </div>
-                                       <label>Tanggal Efektif</label>
-                                      <div class="form-group">
-                                        <div class="col-sm-4">
-                                          <input type="text" name="tgl_efektif" value="<?php echo date('Y-m-d') ?>" class="form-control" required>
-                                        </div>
-                                      </div>
-                                      <label>Tanggal Keluar</label>
-                                      <div class="form-group">
-                                        <div class="col-sm-4">
-                                          <input type="text" name="tgl_keluar" value="<?php echo date('Y-m-d') ?>" class="form-control" required>
-                                        </div>
-                                      </div>
+                <div class="form-group">
+                  <div class="col-sm-6">
+                        <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        <input class="form-control" size="" type="text" value="" readonly>           
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                      </div>
+                      <input type="hidden" id="dtp_input2" name="tgl_masuk" value="">
+                  </div>
+                </div>
+                 <label>Tanggal Efektif</label>
+                <div class="form-group">
+                  <div class="col-sm-6">
+                      <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
+                      <input class="form-control" size="" type="text" value="" readonly>           
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                      </div>
+                      <input type="hidden" name="tgl_efektif" value="" id="dtp_input3" required>
+                  </div>
+                </div>
+                  <label>Tanggal Keluar</label>
+                  <div class="form-group">
+                      <div class="col-sm-6">
+                          <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input4" data-link-format="yyyy-mm-dd">
+                          <input class="form-control" size="" type="text" value="" readonly>           
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                          </div>
+                        <input type="hidden" name="tgl_keluar" value="" id="dtp_input4" required>
+                      </div>
+                </div>
                                          
                                       </div>
                             <!-- Emergency Contact Section -->
@@ -234,3 +245,4 @@ $karyawan = new karyawan;
 
 
 </style>
+<?php include('date_boostrap_script.php'); ?>

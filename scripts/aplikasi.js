@@ -22,6 +22,17 @@
                     }   
                 );
             });
+                $(document).on('click','.tambah-lampiran',function(e){
+                e.preventDefault();
+                $("#modal-tambah-lampiran").modal('show');
+                $(".modal-title").html('MASTER FILE LAMPIRAN');
+                $.get("view/data_file/lampiran_form.php",
+                    {nik:$(this).attr('data-id')},
+                    function(html){
+                        $(".modal-body").html(html);
+                    }   
+                );
+            });
                $(document).on('click','.lihat-lampiran',function(e){
                 e.preventDefault();
                 $("#modal-lampiran").modal('show');
@@ -67,11 +78,11 @@
                     }   
                 );
             });
-                $(document).on('click','.baca-laporan-private',function(e){
+                $(document).on('click','.ubah_tanggal',function(e){
                 e.preventDefault();
-                $("#modal-baca-private").modal('show');
-                 $(".modal-title").html('NOTULEN MUSYAWARAH');
-                $.get("view/detail/detail_private.php",
+                $("#modal-tanggal").modal('show');
+                 $(".modal-title").html('FORM TANGGAL');
+                $.get("view/jabatan/jabatan_form.php",
                 {id_lap:$(this).attr('data-id')},
                  function(html){
                         $(".modal-body").html(html);

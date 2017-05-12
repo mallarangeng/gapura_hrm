@@ -30,9 +30,10 @@ header("location:index.html");
         <th>Status Kerja</th>
         <th>Tgl Pensiun</th>
         <th>Date Input</th>
+        
+        <th>AKSI</th>
         <th>Date Update</th>
-        <th>AKSI</th>
-        <th>AKSI</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -52,7 +53,7 @@ header("location:index.html");
         <td><?php echo $d['status_kerja']; ?></td>
         <td><?php echo $d['tgl_pensiun']; ?></td>
         <td><small><?php echo $d['date_input']; ?></small></td>
-        <td><small><?php echo $d['date_update']; ?></small></td>
+        
         <td>
           <div class="btn-group">
         <button type="button" class="btn btn-success btn-xs">Action</button>
@@ -69,8 +70,8 @@ header("location:index.html");
           <li><a href="#">Dokumen Lembur</a></li>
         </ul>
 </div>
-  </td>
-      <td></td>
+  </td><td><small><?php echo $d['date_update']; ?></small></td>
+      
       </tr>
       <?php 
 }

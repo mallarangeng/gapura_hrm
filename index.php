@@ -36,11 +36,16 @@ header("location:login.php");
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/dataTables.bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/dataTables.tableTools.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-datetimepicker.min.css" media="screen">
 	
 	<script type="text/javascript" language="javascript" src="bootstrap/js/jquery-1.11.3.js"></script>
 	<script type="text/javascript" language="javascript" src="bootstrap/js/jquery.dataTables.js"></script>
 	<script type="text/javascript" language="javascript" src="bootstrap/js/dataTables.bootstrap.js"></script>
 	<script type="text/javascript" language="javascript" src="bootstrap/js/dataTables.tableTools.js"></script>
+
+  <script type="text/javascript" language="javascript" src="bootstrap/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" language="javascript" src="bootstrap/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+
 	<!--<script type="text/javascript" language="javascript" src="../resources/syntax/shCore.js"></script>
 	<script type="text/javascript" language="javascript" src="../resources/demo.js"></script>-->
   <!--
@@ -70,6 +75,7 @@ header("location:login.php");
   });
   </script>
   <!-- close   datepicker -->
+  
 
 <script src="ckeditor/ckeditor.js"></script>
 
