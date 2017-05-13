@@ -17,6 +17,12 @@ header("location:index.html");
 #close akses tanpa login
 ?>
 <body>
+<div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4" align="right"><font color="5cb85c"><h4><strong>DOKUMEN KARYAWAN</strong></h4></font></div>
+</div>
   <div class="table-responsive">
  <table id="example" class="table table-striped table-bordered">
     <thead>

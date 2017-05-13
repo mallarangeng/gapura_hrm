@@ -16,9 +16,14 @@ header("location:index.html");
 #close akses tanpa login
 ?>
 <body>
-
-  <button type="button" class="btn btn-success btn-sm add-karyawan" data-id="<?php echo $_SESSION['user_id'];?>">TAMBAH DATA</button>
-<a class="btn btn-warning btn-sm" href="view/generus/cetak.php" target="_blank">CETAK DATA KARYAWAN</a>
+<div class="row">
+  <div class="col-md-4">
+    <button type="button" class="btn btn-success btn-sm add-karyawan" data-id="<?php echo $_SESSION['user_id'];?>">TAMBAH DATA</button>
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4" align="right"><font color="5cb85c"><h4><strong>MASTER DATA KARYAWAN</strong></h4></font></div>
+</div>
+  
   <hr>
   <div class="table-responsive">
  <table id="example" class="table table-striped table-bordered">

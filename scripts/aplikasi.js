@@ -89,23 +89,23 @@
                     }   
                 );
             });
-                $(document).on('click','.ubah_tanggal',function(e){
+                $(document).on('click','.add-jabatan',function(e){
                 e.preventDefault();
-                $("#modal-tanggal").modal('show');
-                 $(".modal-title").html('FORM TANGGAL');
+                $("#modal-jabatan").modal('show');
+                 $(".modal-title").html('TAMBAH JABATAN');
                 $.get("view/jabatan/jabatan_form.php",
-                {id_lap:$(this).attr('data-id')},
+                {user_id:$(this).attr('data-id')},
                  function(html){
                         $(".modal-body").html(html);
                     }   
                 );
             });
-                $(document).on('click','.baca-laporan',function(e){
+                $(document).on('click','.ubah-jabatan',function(e){
                 e.preventDefault();
-                $("#modal-baca-notulen").modal('show');
-                 $(".modal-title").html('NOTULEN MUSYAWARAH');
-                $.get("view/detail/detail_desa.php",
-                {id_lap:$(this).attr('data-id')},
+                $("#modal-ubah-jabatan").modal('show');
+                 $(".modal-title").html('UBAH JABATAN');
+                $.get("view/jabatan/jabatan_ubah.php",
+                {id_jabatan:$(this).attr('data-id')},
                  function(html){
                         $(".modal-body").html(html);
                     }   

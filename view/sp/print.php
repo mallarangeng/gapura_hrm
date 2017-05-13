@@ -11,6 +11,13 @@ $d= $sp->bacaSp($id_peringatan);
 <html>
 <head>
 <title>Cetak SP</title>
+<style type="text/css">
+  body {
+    font-family: arial;
+    
+  }
+
+</style>
 </head>
 
 <body>

@@ -64,57 +64,27 @@ class Jabatan {
           $data[]=$row;
           return $data;
   }
-    function profile() {
-      $query = mysql_query("SELECT * FROM kelompok WHERE id_kelompok='$_SESSION[id_kelompok]'");
-      while($row=mysql_fetch_array($query))
-      $data[]=$row;
-      return $data;
-  }
-    function tampilKelompokdesa() {
-      $query = mysql_query("SELECT * FROM kelompok WHERE parent='$_SESSION[id_kelompok]'");
-      while($row=mysql_fetch_array($query))
-      $data[]=$row;
-      return $data;
-  }
-  function tampilDesa() {
-      $query = mysql_query("SELECT * FROM kelompok WHERE parent='0' AND aktif='0' ");
-      while($row=mysql_fetch_array($query))
-      $data[]=$row;
-      return $data;
-  }
-  function bacaKelompok($id_kelompok)
+    function tambahJabatan($nm_jabatan,$ket)
+    {
+      $query="INSERT INTO jabatan (nm_jabatan,ket)
+      VALUES('$nm_jabatan','$ket')";
+      $hasil= mysql_query($query);
+    }
+  function bacajabatan($id_jabatan)
           {
-        $query=mysql_query("SELECT * FROM kelompok WHERE id_kelompok='$_GET[id_kelompok]'");
+        $query=mysql_query("SELECT * FROM jabatan WHERE id_jabatan='$_GET[id_jabatan]'");
         $data=mysql_fetch_array($query);
         $data[]=$row;
         if(isset($data)){
           return $data;
         }
       }
-
-   function tambahKelompok($id_kelompok,$nm_kelompok,$parent,$alamat,$nohp,$penjab,$password,$level)
+     function updatejabatan ($id_jabatan,$nm_jabatan,$ket)
     {
-      $query="INSERT INTO kelompok (id_kelompok,nm_kelompok,parent,alamat,nohp,penjab,password,level)
-      VALUES('$id_kelompok','$nm_kelompok','$parent','$alamat','$nohp','$penjab','$password','$level')";
-      $hasil= mysql_query($query);
+      
+      $query=mysql_query("UPDATE jabatan SET nm_jabatan='$nm_jabatan', ket='$ket' WHERE id_jabatan='$id_jabatan'");
     }
-
-     function updateKelompok ($id_kelompok,$nm_kelompok,$parent,$alamat,$nohp,$penjab,$password,$level)
-    {
-      if (empty($password)){
-      $query=mysql_query("UPDATE kelompok SET nm_kelompok='$nm_kelompok', parent='$parent', alamat='$alamat',nohp='$nohp', penjab='$penjab',
-      level='$level'  WHERE id_kelompok='$id_kelompok'");
-    }
-    else 
-    {
-      $query=mysql_query("UPDATE kelompok SET nm_kelompok='$nm_kelompok', parent='$parent', alamat='$alamat',nohp='$nohp', penjab='$penjab',
-        password='$password',level='$level'  WHERE id_kelompok='$id_kelompok'");
-    }
-   }
-
-
-
-  function desaShow() {
+      function desaShow() {
       $query = mysql_query("SELECT id_kelompok, nm_kelompok, penjab,nohp,
       (SELECT COUNT(parent) AS tot_klp FROM kelompok WHERE parent !='0' AND aktif='0')tot_klp,
       (SELECT COUNT(id_lap) AS tot_lap FROM laporan as l left join kelompok as k on l.id_kelompok=k.id_kelompok

@@ -4,15 +4,13 @@ include'../../class/function.php';
 $db = new Database();
 $db->connectMySQL();
 $user = new User();
-$menu = new menu();
-$karyawan = new karyawan();
 $jabatan = new jabatan();
-$sp = new sp();
+$d= $jabatan->bacajabatan($id_jabatan);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Lampiran Form</title>
+  <title>Lampiran Form</title>
 </head>
 <body>
 <div class="row">
@@ -21,11 +19,12 @@ $sp = new sp();
                                       <!-- Text input-->
                                       <div class="form-group">
                                         <div class="col-sm-6">
-                                          <input type="text" name="nm_jabatan" placeholder="Nama Jabatan" class="form-control">
+                                        <input type="hidden" name="id_jabatan" value="<?php echo $d['id_jabatan']; ?>" >
+                                          <input type="text" name="nm_jabatan" value="<?php echo $d['nm_jabatan']; ?>" placeholder="Nama Jabatan" class="form-control">
                                         </div>
 
                                         <div class="col-sm-6"> 
-                                        <input type="text" name="ket" placeholder="Keterangan Jabatan" class="form-control">
+                                        <input type="text" name="ket" value="<?php echo $d['ket']; ?>" placeholder="Keterangan Jabatan" class="form-control">
                           
                                         </div>
                                       </div> 
