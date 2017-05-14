@@ -38,6 +38,7 @@ header("location:login.php");
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/dataTables.tableTools.css">
   
   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-datetimepicker.min.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-select.min.css" media="screen">
 
 	<script type="text/javascript" language="javascript" src="bootstrap/js/jquery-1.11.3.js"></script>
 	<script type="text/javascript" language="javascript" src="bootstrap/js/jquery.dataTables.js"></script>
@@ -45,6 +46,7 @@ header("location:login.php");
 	<script type="text/javascript" language="javascript" src="bootstrap/js/dataTables.tableTools.js"></script>
 
   <script type="text/javascript" language="javascript" src="bootstrap/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" language="javascript" src="bootstrap/js/bootstrap-select.min.js"></script>
   <script type="text/javascript" language="javascript" src="bootstrap/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 
 <!-- Include Date Range Picker -->

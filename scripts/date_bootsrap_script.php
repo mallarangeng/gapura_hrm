@@ -21,7 +21,7 @@
     forceParse: 0
     });
   $('.form_time').datetimepicker({
-        language:  'fr',
+     //   language:  'fr',
         weekStart: 1,
         todayBtn:  1,
     autoclose: 1,

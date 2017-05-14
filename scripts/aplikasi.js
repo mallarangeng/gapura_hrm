@@ -111,23 +111,45 @@
                     }   
                 );
             });
-                $(document).on('click','.add-harga',function(e){
+                $(document).on('click','.add-spl',function(e){
                 e.preventDefault();
-                $("#modal-harga").modal('show');
-                 $(".modal-title").html('TAMBAH HARGA');
-                $.get("view/harga/harga_form.php",
+                $("#modal-spl").modal('show');
+                 $(".modal-title").html('TAMBAH SURAT PERINTAH LEMBUR');
+                $.get("view/splembur/sp_lembur_form.php",
                 {id_mat:$(this).attr('data-id')},
                  function(html){
                         $(".modal-body").html(html);
                     }   
                 );
             });
-                $(document).on('click','.detail-harga',function(e){
+                $(document).on('click','.ubah-spl',function(e){
                 e.preventDefault();
-                $("#modal-detail-harga").modal('show');
-                 $(".modal-title").html('DETAIL HARGA');
-                $.get("view/harga/harga_lihat.php",
-                {id_mat:$(this).attr('data-id')},
+                $("#modal-ubah-spl").modal('show');
+                 $(".modal-title").html('UBAH SURAT PERINTAH LEMBUR');
+                $.get("view/splembur/sp_lembur_ubah.php",
+                {id_spl:$(this).attr('data-id')},
+                 function(html){
+                        $(".modal-body").html(html);
+                    }   
+                );
+            });
+            $(document).on('click','.add-karyawan-spl',function(e){
+                e.preventDefault();
+                $("#modal-add-spl").modal('show');
+                 $(".modal-title").html('TAMBAH KARYAWAN LEMBUR');
+                $.get("view/splembur/pilih.php",
+                {id_spl:$(this).attr('data-id')},
+                 function(html){
+                        $(".modal-body").html(html);
+                    }   
+                );
+            });
+                $(document).on('click','.ubah-karyawan-spl',function(e){
+                e.preventDefault();
+                $("#modal-ubah-k-spl").modal('show');
+                 $(".modal-title").html('UBAH KARYAWAN LEMBUR');
+                $.get("view/splembur/pilih_ubah.php",
+                {id:$(this).attr('data-id')},
                  function(html){
                         $(".modal-body").html(html);
                     }   

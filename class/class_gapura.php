@@ -436,6 +436,62 @@ else{
       $query=mysql_query("UPDATE peringatan SET nik='$nik', tanggal='$tanggal',ke='$ke',keterangan='$keterangan'WHERE id_peringatan='$id_peringatan'");
     }
   }
+  /**
+  *  buat class untuk surat perintah lembur
+  */
+  class Splembur
+  {
+       function tampilklembur()
+    {
+      # code...
+    $query = mysql_query("SELECT a.*,b.*,c.* FROM data_lembur a, karyawan b, jabatan c WHERE a.nik=b.nik AND b.id_jabatan=c.id_jabatan AND id_spl='$_GET[id_spl]'");
+      while($row=mysql_fetch_array($query))
+      $data[]=$row;
+      return $data;
+    }
+      function adddatal($id_spl,$nik,$ket)
+    {
+      $query="INSERT INTO data_lembur (id_spl,nik,ket)
+      VALUES('$id_spl','$nik','$ket')";
+      $hasil= mysql_query($query);
+    }
+      function bacaklembur($id)
+          {
+        $query=mysql_query("SELECT a.*,b.*,c.* FROM data_lembur a, karyawan b, jabatan c WHERE a.nik=b.nik AND b.id_jabatan=c.id_jabatan AND id='$_GET[id]'");
+        $data=mysql_fetch_array($query);
+        $data[]=$row;
+        if(isset($data)){
+          return $data;
+        }
+      }
+    function tampilSpl()
+    {
+      # code...
+      $query = mysql_query("SELECT * FROM sp_lembur");
+      while($row=mysql_fetch_array($query))
+      $data[]=$row;
+      return $data;
+    }
+        function addSpl($id_spl,$tanggal,$jam_awal,$jam_akhir,$tujuan,$pemberi_tugas,$jabatan,$status_spl)
+    {
+      $query="INSERT INTO sp_lembur (id_spl,tanggal,jam_awal,jam_akhir,tujuan,pemberi_tugas,jabatan,status_spl)
+      VALUES('$id_spl','$tanggal','$jam_awal','$jam_akhir','$tujuan','$pemberi_tugas','$jabatan','$status_spl')";
+      $hasil= mysql_query($query);
+    }
+     function updateSpl ($id_spl,$tanggal,$jam_awal,$jam_akhir,$tujuan,$pemberi_tugas,$jabatan,$status_spl)
+    {
+      $query=mysql_query("UPDATE sp_lembur SET tanggal='$tanggal', jam_awal='$jam_awal', jam_akhir='$jam_akhir', tujuan='$tujuan', pemberi_tugas='$pemberi_tugas', jabatan='$jabatan', status_spl='$status_spl' WHERE id_spl='$id_spl'");
+    }
+  function bacasplembur($id_spl)
+          {
+        $query=mysql_query("SELECT * FROM sp_lembur WHERE id_spl='$_GET[id_spl]'");
+        $data=mysql_fetch_array($query);
+        $data[]=$row;
+        if(isset($data)){
+          return $data;
+        }
+      }
+  }
   class Karyawan
   {
     
@@ -602,7 +658,7 @@ else{
   }
   function subMenuNavigasi($menu,$user){
     //$smenu = mysql_query("select * from ms_menu where parent='$menu' order by urut asc");
-    $smenu = mysql_query("select * from menu where parent='$menu'");
+    $smenu = mysql_query("SELECT * from menu where parent='$menu'");
     $ada    = mysql_num_rows($smenu);
     if($ada==0){
       $data[]=$ada;
