@@ -16,6 +16,16 @@ if (!$user->get_sesi())
 header("location:index.html");
 }
 #close akses tanpa login
+if (isset($_GET['aksi']))
+{
+  if ($_GET['aksi'] == 'hapus')
+  {
+    // baca ID dari parameter ID lama pinjaman yang akan dihapus
+    $id = $_GET['id'];
+    // proses hapus data lama pinjaman berdasarkan ID via method
+    $splembur->hapusklembur($id);  
+  }
+  }
 ?>
 <body>
 <div class="row">
@@ -84,7 +94,9 @@ header("location:index.html");
       <td><?php echo $d['nm_jabatan']; ?></td>
       <td><?php echo $d['ket']; ?></td>
         <td>
-            <a href="" class="ubah-karyawan-spl" data-id="<?php echo $d['id']; ?>" ><span style="margin-left: 10px; color:#87c968" class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit Data"></span></a></td>
+            <a href="" class="ubah-karyawan-spl" data-id="<?php echo $d['id']; ?>" ><span style="margin-left: 10px; color:#87c968" class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit Data"></span></a>
+            <a href="?r=splembur&pg=lembur_data&aksi=hapus&id=<?php echo $d['id'];?>&id_spl=<?php echo $_GET['id_spl'];?>" ><span style="margin-left: 10px; color:#d9534f" class="glyphicon glyphicon-trash" aria-hidden="true" title="Hapus Data"></span></a>
+            </td>
             
       </tr>
       <?php 
@@ -171,7 +183,8 @@ header("location:index.html");
   <?php
                 if ($_POST['updatesplk'])
                 {
-                  $splembur->adddatal(
+                  $splembur->updateklembur(
+                  $_POST['id'],
                   $_POST['id_spl'],
                   $_POST['nik'],
                   $_POST['ket']);

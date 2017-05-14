@@ -464,6 +464,16 @@ else{
           return $data;
         }
       }
+          function updateklembur ($id,$id_spl,$nik,$ket)
+    {
+      $query=mysql_query("UPDATE data_lembur SET id_spl='$id_spl', nik='$nik', ket='$ket' WHERE id='$id'");
+    }
+        function hapusklembur($id)
+  {
+    $query = "DELETE FROM data_lembur WHERE id='$id'";
+    mysql_query($query);
+    echo"<meta http-equiv='refresh' content='0;url=?r=splembur&pg=lembur_data&id_spl=$_GET[id_spl]'>";
+  }
     function tampilSpl()
     {
       # code...

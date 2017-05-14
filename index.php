@@ -34,6 +34,10 @@ header("location:login.php");
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">-->
 	<title>HRM Gapura Angkasa</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/sb-admin-2.css">
+  <link href="bootstrap/css/morris.css" rel="stylesheet">
+  <link href="bootstrap/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/dataTables.bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/dataTables.tableTools.css">
   
@@ -48,6 +52,13 @@ header("location:login.php");
   <script type="text/javascript" language="javascript" src="bootstrap/js/bootstrap-datetimepicker.js"></script>
   <script type="text/javascript" language="javascript" src="bootstrap/js/bootstrap-select.min.js"></script>
   <script type="text/javascript" language="javascript" src="bootstrap/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+  
+
+    <!-- Morris Charts JavaScript -->
+    <script type="text/javascript" language="javascript" src="bootstrap/js/raphael.min.js"></script>
+    <script type="text/javascript" language="javascript" src="bootstrap/js/morris.min.js"></script>
+    
+    <!-- Custom Theme JavaScript -->
 
 <!-- Include Date Range Picker -->
 
