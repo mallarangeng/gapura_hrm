@@ -7,8 +7,14 @@ $db->connectMySQL();
 $karyawan = new karyawan();
 $d= $karyawan->bacaKaryawan($nik);
 ?>
+
+  <button type="button" class="btn btn-success ubah-generus btn-sm edit-karyawan" data-id="<?php echo $d['nik']; ?>">
+<span class="glyphicon glyphicon-edit"></span>  UBAH DATA</button>
+    <a  class="btn btn-warning btn-sm " href="?r=karyawan&pg=karyawan"><span class="glyphicon glyphicon-arrow-left"></span>   KEMBALI</a></td>
+    <hr>
 <div class="row">
   <div class="col-md-8">
+
 <table class="table">
     <thead>
       <tr>
@@ -78,7 +84,53 @@ $d= $karyawan->bacaKaryawan($nik);
   <br>
   <p>
   	<img src="file_foto/<?php echo $d['foto']; ?>" class="img-responsive" alt="Cinque Terre">
-
-
   </div>
 </div>
+
+<div class="modal fade" id="modal-edit-karyawan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">    
+                <div class="modal-content">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" name="simpankaryawan" value="Update Data" class="btn btn-success">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                    </div>
+                   </form>
+                    
+                </div>
+            </div>
+        </div>
+
+  <?php
+if ($_POST['simpankaryawan']){
+  $tgl_lahir=$_POST['thn'].'-'.$_POST['bln'].'-'.$_POST['tgl'];
+  $karyawan->updateKaryawan(
+  $_POST['nik'],
+  $_POST['user_id'],
+  $_POST['nama'],
+  $_POST['tempat_lahir'],
+  $tgl_lahir,
+  $_POST['jekel'],
+  $_POST['alamat'],
+  $_POST['agama'],
+  $_POST['no_hp'],
+  $_POST['tgl_masuk'],
+  $_POST['tgl_efektif'],
+  $_POST['stat_kerja'],
+  $_POST['id_jabatan'],
+  $_POST['tgl_pensiun'],
+  $_POST['stat_karyawan'],
+  $_POST['tgl_nonaktif'],
+  $_POST['catatan'],
+  #$_POST['foto'],
+  $_POST['date_input'],
+  $_POST['date_update']);
+   echo"<meta http-equiv='refresh' content='0;url=?r=karyawan&pg=karyawan_edit&nik=$_GET[nik]'>";  
+  }
+  ?>

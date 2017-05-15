@@ -46,14 +46,14 @@ header("location:index.html");
         ?>
       <tr>
        <td><?php echo $d['id_peringatan']; ?></td>
-       <td><?php echo $d['tanggal']; ?></td>
+       <td><?php echo dateToIndo($d['tanggal']); ?></td>
        <td><?php echo $d['nik']; ?></td>
         <td>
         <button type="button" class="btn btn-success btn-xs detail-karyawan" data-id="<?php echo $d['nik'];?>">Detail</button>
         <?php echo $d['nama']; ?></td>
         <td><?php echo $d['nm_jabatan']; ?></td>
-        <td><?php echo $d['status_kerja']; ?></td>
-        <td><?php echo $d['tgl_masuk']; ?></td>
+        <td><?php echo $d['stat_kerja']; ?></td>
+        <td><?php echo dateToIndo($d['tgl_masuk']); ?></td>
         <td><?php echo $d['ke']; ?></td>
         <td><a href="" class="edit-sp" data-id="<?php echo $d['id_peringatan']; ?>"><span style="margin-left: 10px; color:#a3ce5a" class="glyphicon glyphicon-edit"         
             aria-hidden="true"></span></a>

@@ -57,7 +57,7 @@ header("location:index.html");
         <td><?php echo $d['tgl_masuk']; ?></td>
         <td><?php echo $d['tgl_efektif']; ?></td>
         <td><?php echo $d['nm_jabatan']; ?></td>
-        <td><?php echo $d['status_kerja']; ?></td>
+        <td><?php echo $d['stat_kerja']; ?></td>
         <td><?php echo $d['tgl_pensiun']; ?></td>
         <td><small><?php echo $d['date_input']; ?></small></td>
         

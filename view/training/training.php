@@ -25,6 +25,7 @@ header("location:index.html");
         <th>Nik</th>
         <th>Nama</th>
         <th>Jenis Training</th>
+        <th>Training Yang Dilakukan</th>
         <th>Tgl Awal</th>
         <th>Tgl Akhir</th>
         <th>Nilai</th>
@@ -41,6 +42,7 @@ header("location:index.html");
        <td><?php echo $d['id_training']; ?></td>
        <td><?php echo $d['nik']; ?></td>
         <td><?php echo $d['nama']; ?></td>
+        <td><?php echo $d['nm_kat']; ?></td>
         <td><?php echo $d['keterangan']; ?></td>
         <td><?php echo $d['tgl_awal']; ?></td>
         <td><?php echo $d['tgl_akhir']; ?></td>

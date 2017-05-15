@@ -10,6 +10,18 @@
                     }   
                 );
             });
+                     $(document).on('click','.edit-karyawan',function(e){
+                e.preventDefault();
+                $("#modal-edit-karyawan").modal('show');
+                $(".modal-title").html('FORM UBAH KARYAWAN');
+                $.get("view/karyawan/karyawan_update.php",
+                    {nik:$(this).attr('data-id')},
+                    function(html){
+                        $(".modal-body").html(html);
+                    }   
+                );
+            });
+     
      
                $(document).on('click','.detail-karyawan',function(e){
                 e.preventDefault();

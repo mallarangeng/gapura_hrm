@@ -18,10 +18,9 @@ header("location:index.html");
 <body>
 <div class="row">
   <div class="col-md-4">
-    <button type="button" class="btn btn-success btn-sm add-karyawan" data-id="<?php echo $_SESSION['user_id'];?>">TAMBAH DATA</button>
   </div>
   <div class="col-md-4"></div>
-  <div class="col-md-4" align="right"><font color="5cb85c"><h4><strong>MASTER DATA KARYAWAN</strong></h4></font></div>
+  <div class="col-md-4" align="right"><font color="5cb85c"><h4><strong>DATA KARYAWAN</strong></h4></font></div>
 </div>
   
   <hr>
@@ -39,7 +38,6 @@ header("location:index.html");
         <th>Date Input</th>
         <th>Date Update</th>
         <th>Lampiran</th>
-        <th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -74,21 +72,13 @@ header("location:index.html");
         <td><small><?php echo $d['date_update']; ?></small></td>
         <td>
           <div class="btn-group">
-        <button type="button" class="btn btn-success btn-xs">Lampiran</button>
+        <button type="button" class="btn btn-success btn-xs lihat-lampiran" data-id="<?php echo $d['nik']; ?>">Lampiran</button>
         <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="caret"></span>
           <span class="sr-only">Toggle Dropdown</span>
         </button>
-        <ul class="dropdown-menu">
-          <li><a href="#" class="tambah-lampiran" data-id="<?php echo $d['nik']; ?>">Tambah Lampiran</a></li>
-          <li><a href="#" class="lihat-lampiran" data-id="<?php echo $d['nik']; ?>">Lihat Lampiran</a></li>
-        </ul>
 </div>
      <!-- Split button -->
-<td>
-<a href="?r=karyawan&pg=karyawan_edit&nik=<?php echo $d['nik']; ?>"><span style="margin-left: 10px; color:#a3ce5a" class="glyphicon glyphicon-edit"         
-            aria-hidden="true"></span></a>
-</td>
       </tr>
       <?php 
 }

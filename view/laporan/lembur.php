@@ -18,11 +18,24 @@ header("location:index.html");
 ?>
 <body>
 <div class="row">
-  <div class="col-md-4">
-    <button type="button" class="btn btn-success btn-sm add-spl" data-id="<?php echo $_SESSION['user_id'];?>">TAMBAH DATA</button>
+<form action="" method="post">
+  <div class="col-md-6">
+  <label>Pilih Periode</label>
+<div class="form-group">
+    <div class="col-sm-4">
+      <input type="text" name="tgl_awal" id="datepicker" placeholder="Tanggal Awal" class="form-control" required>
+    </div>
+    <div class="col-sm-4">
+      <input type="text" name="tgl_akhir" id="datepicker2" placeholder="Tanggal Akhir" class="form-control" required>
+    </div>
+     <div class="col-sm-4">
+      <input type="submit" name="submit" value="Tampilkan Data" class="btn btn-success">
+    </div>
   </div>
+  </div>
+</form>
   <div class="col-md-4"></div>
-  <div class="col-md-4" align="right"><font color="5cb85c"><h4><strong>SURAT PERINTAH LEMBUR</strong></h4></font></div>
+  <div class="col-md-4" align="right"><font color="5cb85c"><h4><strong>LAPORAN LEMBUR</strong></h4></font></div>
 </div>
 <hr>
   <div class="table-responsive">
@@ -33,23 +46,27 @@ header("location:index.html");
         <th>Tanggal</th>
         <th>Jam Lembur</th>
         <th>Total</th>
-        <th>Tujuan Lembur</th>
+        <th>Nik</th>
+        <th>Nama</th>
+        <th>Jabatan</th>
         <th>Pemberi Tugas</th>
         <th>Status SPL</th>
-        <th>Aksi</th>
+   
       </tr>
     </thead>
     <tbody>
      <?php
-          $arraysplembur=$splembur->tampilSpl();
+          $arraysplembur=$splembur->tampillaplembur();
           if (count($arraysplembur)) {
           foreach($arraysplembur as $d) {
             $awal  = strtotime($d['jam_awal']);
             $akhir = strtotime($d['jam_akhir']);
             $diff  = $akhir - $awal;
             $jam   = floor($diff / (60 * 60));
-            $menit = $diff - $jam * (60 * 60);   
+            $menit = $diff - $jam * (60 * 60);  
             # untuk membuat menit  echo floor( $menit / 60 )
+            #menghitung total jam
+            $totaljam+=$jam;
         ?>
       <tr>
        <td><?php echo $d['id_spl']; ?></td>
@@ -60,22 +77,33 @@ header("location:index.html");
             echo $jam;
             ?> Jam
         </td>
-        <td><?php echo $d['tujuan']; ?></td>
+        <td><?php echo $d['nik']; ?></td>
+        <td><?php echo $d['nama']; ?></td>
+        <td><?php echo $d['jabatan']; ?></td>
         <td><?php echo $d['pemberi_tugas']; ?></td>
         <td><?php echo $d['status_spl']; ?></td>
-        <td>
-          <a href="?r=splembur&pg=lembur_data&id_spl=<?php echo $d['id_spl']; ?>"><span style="margin-left: 10px; color:#b7d551" class="glyphicon glyphicon-user"         
-            aria-hidden="true"></span></a>
-            <a href="" class="ubah-spl" data-id="<?php echo $d['id_spl']; ?>" ><span style="margin-left: 10px; color:#87c968" class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit Data"></span></a>
-            <a href="view/sp/print.php?id_peringatan=<?php echo $d['id_peringatan']; ?>" target="_blank"><span style="margin-left: 10px; color:#46b87a" class="glyphicon glyphicon-print" aria-hidden="true"></span></a>
-        </td>
+
       </tr>
       <?php 
 }
 }
       ?>
     </tbody>
+        
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Total <?php echo $totaljam; ?></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    
   </table>
+  <?php include('../../scripts/date_bootsrap_script.php'); ?>
   </div>
   <!--    -->
    <div class="modal fade" id="modal-spl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

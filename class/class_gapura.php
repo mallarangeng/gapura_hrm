@@ -449,6 +449,15 @@ else{
       $data[]=$row;
       return $data;
     }
+     function tampillaplembur()
+    {
+    #$tgl_awal=$_POST['tgl_awal'];
+    #$tgl_akhir=$_POST['tgl_akhir'];
+    $query = mysql_query("SELECT a.*,b.*,c.*,d.* FROM data_lembur a, karyawan b, jabatan c, sp_lembur d WHERE a.nik=b.nik AND b.id_jabatan=c.id_jabatan AND a.id_spl=d.id_spl AND tanggal BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]' ");
+      while($row=mysql_fetch_array($query))
+      $data[]=$row;
+      return $data;
+    }
       function adddatal($id_spl,$nik,$ket)
     {
       $query="INSERT INTO data_lembur (id_spl,nik,ket)
@@ -526,25 +535,23 @@ else{
       $data[]=$row;
       return $data;
     }
-    function tambahKaryawan($nik,$user_id,$nama,$tempat_lahir,$tgl_lahir,$jekel,$alamat,$agama,$no_hp,$tgl_masuk,$tgl_efektif,$tgl_keluar,$id_jabatan,$status_kerja,$tgl_pensiun,$catatan,$foto,$date_input,$date_update)
+        function tampilKaryawansort($stat_karyawan) {
+      $query = mysql_query("SELECT a.*,b.*,c.* FROM karyawan a, user b, jabatan c WHERE a.user_id=b.user_id AND a.id_jabatan=c.id_jabatan AND stat_karyawan='$_GET[stat_karyawan]'");
+      while($row=mysql_fetch_array($query))
+      $data[]=$row;
+      return $data;
+    }
+    function tambahKaryawan($nik,$user_id,$nama,$tempat_lahir,$tgl_lahir,$jekel,$alamat,$agama,$no_hp,$tgl_masuk,$tgl_efektif,$stat_kerja,$id_jabatan,$tgl_pensiun,$stat_karyawan,$tgl_nonaktif,$catatan,$foto,$date_input,$date_update)
     {
-      $query="INSERT INTO karyawan (nik,user_id,nama,tempat_lahir,tgl_lahir,jekel,alamat,agama,no_hp,tgl_masuk,tgl_efektif,tgl_keluar,id_jabatan,status_kerja,tgl_pensiun,catatan,foto,date_input,date_update)
-      VALUES('$nik','$user_id','$nama','$tempat_lahir','$tgl_lahir','$jekel','$alamat','$agama','$no_hp','$tgl_masuk','$tgl_efektif','$tgl_keluar','$id_jabatan','$status_kerja','$tgl_pensiun','$catatan','$foto','$date_input','$date_update')";
+      $query="INSERT INTO karyawan (nik,user_id,nama,tempat_lahir,tgl_lahir,jekel,alamat,agama,no_hp,tgl_masuk,tgl_efektif,stat_kerja,id_jabatan,tgl_pensiun,stat_karyawan,tgl_nonaktif,catatan,foto,date_input,date_update)
+      VALUES('$nik','$user_id','$nama','$tempat_lahir','$tgl_lahir','$jekel','$alamat','$agama','$no_hp','$tgl_masuk','$tgl_efektif','$stat_kerja','$id_jabatan','$tgl_pensiun','$stat_karyawan','$tgl_nonaktif','$catatan','$foto','$date_input','$date_update')";
       move_uploaded_file($_FILES['foto']['tmp_name'],"file_foto/".$foto);
       $hasil= mysql_query($query);
     }
-      function updateGenerus ($nig,$id_kelompok,$nama,$tempat_lahir,$tgl_lahir,$jekel,$gol_darah,$alamat,$nohp,$nm_ayah,$nm_ibu,$id_kat,$foto,$date_input,$date_update)
+      function updateKaryawan ($nik,$user_id,$nama,$tempat_lahir,$tgl_lahir,$jekel,$alamat,$agama,$no_hp,$tgl_masuk,$tgl_efektif,$stat_kerja,$id_jabatan,$tgl_pensiun,$stat_karyawan,$tgl_nonaktif,$catatan,$date_input,$date_update)
     {
-      if (empty($foto)){
-      $query=mysql_query("UPDATE generus SET id_kelompok='$id_kelompok', nama='$nama', tempat_lahir='$tempat_lahir', tgl_lahir='$tgl_lahir', jekel='$jekel', gol_darah='$gol_darah', alamat='$alamat',nohp='$nohp', nm_ayah='$nm_ayah', nm_ibu='$nm_ibu', id_kat='$id_kat', date_input='$date_input', date_update='$date_update'  WHERE nig='$nig'");
+      $query=mysql_query("UPDATE karyawan SET user_id='$user_id', nama='$nama', tempat_lahir='$tempat_lahir', tgl_lahir='$tgl_lahir', jekel='$jekel', alamat='$alamat', agama='$agama',no_hp='$no_hp', tgl_masuk='$tgl_masuk', tgl_efektif='$tgl_efektif', stat_kerja='$stat_kerja', id_jabatan='$id_jabatan', tgl_pensiun='$tgl_pensiun', stat_karyawan='$stat_karyawan', tgl_nonaktif='$tgl_nonaktif', catatan='$catatan', date_input='$date_input', date_update='$date_update'  WHERE nik='$nik'");
     }
-  else 
-  {
-       $query=mysql_query("UPDATE generus SET id_kelompok='$id_kelompok', nama='$nama', tempat_lahir='$tempat_lahir', tgl_lahir='$tgl_lahir', jekel='$jekel', gol_darah='$gol_darah', alamat='$alamat',nohp='$nohp', nm_ayah='$nm_ayah', nm_ibu='$nm_ibu', id_kat='$id_kat', foto='$foto', date_input='$date_input', date_update='$date_update' WHERE nig='$nig'");
-         move_uploaded_file($_FILES['foto']['tmp_name'],"file_foto/".$foto);
-         $hasil= mysql_query($query);
-    }
-  }
   }
   class Detail
   {
@@ -658,7 +665,7 @@ else{
         icon='$icon',urut='$urut'  WHERE id_menu='$id_menu'");
     }
   function menuNavigasi($user){
-    $menu = mysql_query("select * from menu where parent='0'");
+    $menu = mysql_query("select * from menu where parent='0' ORDER BY urut ASC");
     #$menu = mysql_query("SELECT a.username,b.id_menu,b.baca,b.tulis,c.* FROM ms_user a, ms_menu_user b, ms_menu c WHERE a.username=b.username AND b.id_menu=c.id_menu AND a.username ='$user' AND b.baca='Y' AND c.parent='0' AND a.blokir='N' ORDER BY urut ASC");
     while($row=mysql_fetch_array($menu))
       $data[]=$row;

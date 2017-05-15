@@ -5,7 +5,8 @@ $db = new Database();
 $db->connectMySQL();
 $user = new user;
 $jabatan = new jabatan;
-$karyawan = new karyawan;
+$karyawan = new karyawan();
+$d= $karyawan->bacaKaryawan($nik);
 #cegah akses tanpa melalui login
 #close akses tanpa login
 ?>
@@ -28,23 +29,27 @@ $karyawan = new karyawan;
                                       <div class="form-group">
 
                                         <div class="col-sm-6">
-                                          <input type="hidden" name="nik" value="<?php echo kdauto("karyawan","2017"); ?>">
-                                          <input type="hidden" name="user_id" value="<?php echo $_GET['user_id']; ?>">
-                                          <input type="text" name="nama" placeholder="Nama Lengkap" class="form-control" required>
+                                          <input type="hidden" name="nik" value="<?php echo $d['nik']; ?>">
+                                          <input type="hidden" name="user_id" value="<?php echo $d['user_id']; ?>">
+                                          <input type="text" name="nama" value="<?php echo $d['nama']; ?>" placeholder="Nama Lengkap" class="form-control" required>
                                         </div>
                                       </div>
                                       <label>Tempat Lahir :</label>
                                       <div class="form-group">
                                         <div class="col-sm-6">
-                                          <input type="text" name="tempat_lahir" placeholder="Tempat Lahir" class="form-control" required>
+                                          <input type="text" name="tempat_lahir" value="<?php echo $d['tempat_lahir']; ?>" placeholder="Tempat Lahir" class="form-control" required>
                                         </div>
                                       </div>
+
+                                      <?php
+                                          $tanggal=explode('-',$d['tgl_lahir']);
+                                          ?> 
 
                                       <label>Tanggal Lahir :</label>
                                       <div class="form-group">
                                         <div class="col-sm-4">
                                           <select name="tgl" class="form-control" required>
-                                            <option value="">Tanggal</option>
+                                            <option value="<?php echo $tanggal[2]; ?>"><?php echo $tanggal[2]; ?></option>
                                              <?PHP for ($hari=1; $hari<=31; $hari++){ ?>
                                               <option value="<?php echo $hari; ?>"><?php echo $hari; ?></option>
                                               <?php } ?>
@@ -52,7 +57,7 @@ $karyawan = new karyawan;
                                         </div>
                                         <div class="col-sm-4">
                                           <select name="bln" class="form-control" required>
-                                            <option value="">Bulan</option>
+                                            <option value="<?php echo $tanggal[1]; ?>"><?php echo $tanggal[1]; ?></option>
                                             <?php $nmbln = array("01","02","03","04","05","06","07","08","09","10","11","12"); ?>
                                             <?PHP for ($bln=1; $bln<=12; $bln++){ ?>
                                             <option value="<?php echo $bln; ?>"><?php echo $nmbln[$bln-1]; ?></option>
@@ -61,8 +66,8 @@ $karyawan = new karyawan;
                                         </div>
                                         <div class="col-sm-4">
                                           <select name="thn" class="form-control" required>
-                                            <option value="">Tahun</option>
-                                            <?PHP for ($thn=1980; $thn<=2017; $thn++){ ?>
+                                            <option value="<?php echo $tanggal[0]; ?>"><?php echo $tanggal[0]; ?></option>
+                                            <?PHP for ($thn=1960; $thn<=2005; $thn++){ ?>
                                             <option value="<?php echo $thn; ?>"><?php echo $thn; ?></option>
                                             <?php } ?>
                                           </select>
@@ -74,7 +79,7 @@ $karyawan = new karyawan;
                                       <div class="form-group">
                                         <div class="col-sm-4">
                                           <select name="jekel" class="form-control" required>
-                                            <option value=""> Pilih Jenis Kelamin</option>
+                                            <option value="<?php echo $d['jekel']; ?>"> Pilih Jenis Kelamin</option>
                                             <option value="Laki Laki">Laki Laki</option>
                                             <option value="Perempuan">Perempuan</option>
                                           </select>
@@ -83,7 +88,7 @@ $karyawan = new karyawan;
                                           <label>Alamat Lengkap</label>
                                         <div class="form-group">
                                         <div class="col-sm-10">
-                                          <input type="text" name="alamat" placeholder="ALamat" class="form-control" required>
+                                          <input type="text" name="alamat" value="<?php echo $d['alamat']; ?>" placeholder="ALamat" class="form-control" required>
                                         </div>
                                       </div>
                             <!-- Emergency Contact Section -->
@@ -101,7 +106,7 @@ $karyawan = new karyawan;
                                           <div class="form-group">
                                         <div class="col-sm-4">
                                           <select name="agama" class="form-control" required>
-                                            <option value="">Pilih Agama</option>
+                                            <option value="<?php echo $d['agama']; ?>"><?php echo $d['agama']; ?></option>
                                             <option value="islam">Islam</option>
                                             <option value="Kristen">Kristen</option>
                                             <option value="Hindu">Hindu</option>
@@ -113,7 +118,7 @@ $karyawan = new karyawan;
                                       <label>Nomor HP</label>
                                       <div class="form-group">
                                         <div class="col-sm-6">
-                                          <input type="text" name="no_hp" placeholder="Nomor HP" class="form-control" required>
+                                          <input type="text" name="no_hp" value="<?php echo $d['no_hp']; ?>" placeholder="Nomor HP" class="form-control" required>
                                         </div>
                                       </div>      
                             <!-- Parent/Guadian Contact Section -->
@@ -123,7 +128,7 @@ $karyawan = new karyawan;
                 <div class="form-group">
                   <div class="col-sm-6">
                         <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                        <input class="form-control" size="" type="text" value="" readonly>           
+                        <input class="form-control" size="" type="text" value="<?php echo $d['tgl_masuk']; ?>">           
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                       </div>
                       <input type="hidden" id="dtp_input2" name="tgl_masuk" value="">
@@ -133,7 +138,7 @@ $karyawan = new karyawan;
                 <div class="form-group">
                   <div class="col-sm-6">
                       <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
-                      <input class="form-control" size="" type="text" value="" readonly>           
+                      <input class="form-control" size="" type="text" value="<?php echo $d['tgl_efektif']; ?>">           
                       <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                       </div>
                       <input type="hidden" name="tgl_efektif" value="" id="dtp_input3" required>
@@ -143,7 +148,7 @@ $karyawan = new karyawan;
                         <div class="form-group">
                              <div class="col-sm-4">
                             <select name="stat_kerja" class="form-control" required>
-                              <option value="">Status Kerja</option>
+                              <option value="<?php echo $d['stat_kerja']; ?>"><?php echo $d['stat_kerja']; ?></option>
                               <option value="OutSourching">OutSourching</option>
                               <option value="Karyawan">Karyawan</option>
                               
@@ -154,13 +159,13 @@ $karyawan = new karyawan;
                         <div class="form-group">
                              <div class="col-sm-4">
                             <select name="id_jabatan" class="form-control" required>
-                              <option value="">Pilih Jabatan</option>
+                              <option value="<?php echo $d['id_jabatan']; ?>"><?php echo $d['nm_jabatan']; ?></option>
                               <?php
                               $arrayjabatan=$jabatan->tampilJabatan();
                               if (count($arrayjabatan)) {
-                              foreach($arrayjabatan as $d) {
+                              foreach($arrayjabatan as $jab) {
                             ?>
-                              <option value="<?php echo $d['id_jabatan']; ?>"><?php echo $d['nm_jabatan']; ?></option>
+                              <option value="<?php echo $jab['id_jabatan']; ?>"><?php echo $jab['nm_jabatan']; ?></option>
                             <?php
                             }
                             } ?>
@@ -183,16 +188,17 @@ $karyawan = new karyawan;
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input5" data-link-format="yyyy-mm-dd">
-                                        <input class="form-control" size="" type="text" value="" readonly>           
+                                        <input class="form-control" type="text" value="<?php echo $d['tgl_pensiun']; ?>">           
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                         </div>
-                                      <input type="hidden" name="tgl_pensiun" value="" id="dtp_input5" required>
+                                      <input type="hidden" name="tgl_pensiun" value="<?php echo $d['tgl_pensiun']; ?>" id="dtp_input5" required>
                                     </div>
                               </div>
                                  <label>Status Karyawan</label>
                         <div class="form-group">
                              <div class="col-sm-4">
                             <select name="stat_karyawan" class="form-control" required>
+                            <option value="<?php echo $d['stat_karyawan']; ?>"><?php echo $d['stat_karyawan']; ?></option>
                               <option value="Aktif">Aktif</option>
                               <option value="Non Aktif">Non Aktif</option>
                               <option value="Pensiun">Pensiun</option>
@@ -204,7 +210,7 @@ $karyawan = new karyawan;
                   <div class="form-group">
                       <div class="col-sm-6">
                           <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input4" data-link-format="yyyy-mm-dd">
-                          <input class="form-control" size="" type="text" value="" readonly>           
+                          <input class="form-control" size="" type="text" value="<?php echo $d['tgl_nonaktif']; ?>">           
                           <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                           </div>
                         <input type="hidden" name="tgl_nonaktif" value="" id="dtp_input4" required>
@@ -215,7 +221,7 @@ $karyawan = new karyawan;
                                       <label>Catatan Mengenai Karyawan</label>
                                       <div class="form-group">
                                         <div class="col-sm-10">
-                                          <textarea name="catatan" rows="6" class="form-control"></textarea>
+                                          <textarea name="catatan" rows="6" class="form-control"><?php echo $d['catatan']; ?></textarea>
                                         </div>
                                       </div>
                                       <label>Satus Kerja</label>
@@ -223,10 +229,13 @@ $karyawan = new karyawan;
                                         <div class="form-group">
                                         <div class="col-sm-4">        
                                         <label class="btn btn-info btn-file">
-                                            Cari File Foto <input type="file" name="foto" hidden>
+                                            Cari File Foto 
+                                            <!--
+                                          <input type="file" name="" value="<?php echo $d['foto']; ?>" hidden>
+                                          -->
                                         </label>
-                                                   <input type="hidden" name="date_input" value="<?php echo tglSkrg(); ?>">
-                                                  <input type="hidden" name="date_update" value="">
+                                                   <input type="hidden" name="date_input" value="<?php echo $d['date_input']; ?>">
+                                                  <input type="hidden" name="date_update" value="<?php echo tglSkrg(); ?>">
                                                   
                                      
                                         </div>

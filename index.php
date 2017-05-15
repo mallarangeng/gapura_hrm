@@ -88,6 +88,11 @@ header("location:login.php");
       changeYear: true,
       dateFormat: "yy-mm-dd"
     });
+      $( "#datepicker2" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: "yy-mm-dd"
+    });
   });
   </script>
   <!-- close   datepicker -->
