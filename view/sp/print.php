@@ -48,7 +48,7 @@ $d= $sp->bacaSp($id_peringatan);
   </tr>
   <tr>
     <td>Nama</td>
-    <td>: <?php echo $d['nama']; ?></td>
+    <td>: <strong><?php echo $d['nama']; ?></strong></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
@@ -76,15 +76,20 @@ $d= $sp->bacaSp($id_peringatan);
   <tr>
     <td height="81">&nbsp;</td>
     <td>&nbsp;</td>
-    <td align="center">Tangerang, <?php echo $d['tanggal']; ?></td>
+    <td align="center">Tangerang, <?php echo dateToIndo($d['tanggal']); ?></td>
   </tr>
   <tr>
-    <td height="119">&nbsp;</td>
+    <td height="119">&nbsp;<button onclick="myFunction()">Print</button></td>
     <td>&nbsp;</td>
-    <td align="center">Hendri Yulianto<br>
+    <td align="center"><strong>Achmad Bustomi</strong><br>
     Hrd</td>
   </tr>
 </table>
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
 
 </body>
 </html>

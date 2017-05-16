@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="bootstrap/js/bootstrap.min.js"></script>
 <style type="text/css">
     body {
-        background-image: url("images/bg.jpg");
+        background-image: url("images/bg2.jpg");
     }
 </style>
 

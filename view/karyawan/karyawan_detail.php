@@ -48,11 +48,11 @@ $d= $karyawan->bacaKaryawan($nik);
         <td>Tanggal Masuk</td>
         <td>: <?php echo dateToindo($d['tgl_masuk']); ?> Efektif : <?php echo dateToindo($d['tgl_efektif']); ?></td>
       </tr>
-         <tr>
-        <td>Jabatan</td>
+         <tr class="success">
+        <td >Jabatan</td>
         <td>: <?php echo $d['nm_jabatan']; ?> /  Status Kerja : <?php echo $d['stat_kerja']; ?></td>
       </tr>
-         <tr class="success">
+         <tr >
         <td >Tanggal Pensiun</td>
         <td>: <?php echo dateToindo($d['tgl_pensiun']); ?></td>
       </tr>

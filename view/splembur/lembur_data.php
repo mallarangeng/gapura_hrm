@@ -60,6 +60,9 @@ if (isset($_GET['aksi']))
     <button type="button" data-id="<?php echo $dk['id_spl']; ?>" class="btn btn-success btn-xs add-karyawan-spl">
   <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Tambah Karyawan
 </button>
+<a href="view/splembur/print.php?id_spl=<?php echo $dk['id_spl']; ?>" target="_blank" type="button" class="btn btn-info btn-xs">
+  <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print
+</a>
 
     <p></td>
   </tr>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2017 at 08:32 PM
+-- Generation Time: May 16, 2017 at 02:44 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `datafile` (
   `nik` varchar(20) COLLATE latin1_general_ci NOT NULL,
   `nama_file` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `gambar` text COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `datafile`
@@ -46,7 +46,10 @@ INSERT INTO `datafile` (`kode_file`, `nik`, `nama_file`, `gambar`) VALUES
 (6, '2017000004', 'Scan Kartu Keluarga', '2017000004_kk2.jpg'),
 (7, '2017000005', 'Scan KTP', '2017000005_k_6.png'),
 (8, '2017000005', 'Scan Ijazah', '2017000005_3.jpg'),
-(9, '2017000005', 'Scan Kartu Keluarga', '2017000005_kk3.jpg');
+(9, '2017000005', 'Scan Kartu Keluarga', '2017000005_kk3.jpg'),
+(10, '2017000017', 'Scan KTP', '2017000017_k_15.jpg'),
+(11, '2017000017', 'Scan Ijazah', '2017000017_8.jpg'),
+(12, '2017000017', 'Scan Kartu Keluarga', '2017000017_kk3.jpg');
 
 -- --------------------------------------------------------
 
@@ -59,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `data_lembur` (
   `id_spl` varchar(10) NOT NULL,
   `nik` varchar(10) NOT NULL,
   `ket` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_lembur`
@@ -79,7 +82,10 @@ INSERT INTO `data_lembur` (`id`, `id_spl`, `nik`, `ket`) VALUES
 (19, 'SPL0000005', '2017000010', ''),
 (20, 'SPL0000005', '2017000005', ''),
 (21, 'SPL0000005', '2017000013', ''),
-(22, 'SPL0000005', '2017000006', '');
+(22, 'SPL0000005', '2017000006', ''),
+(23, 'SPL0000006', '2017000006', ''),
+(24, 'SPL0000006', '2017000015', ''),
+(25, 'SPL0000006', '2017000016', '');
 
 -- --------------------------------------------------------
 
@@ -156,7 +162,8 @@ INSERT INTO `karyawan` (`nik`, `user_id`, `nama`, `tempat_lahir`, `tgl_lahir`, `
 ('2017000013', '201383087', 'Azizah', 'Bandung', '1994-10-13', 'Laki Laki', 'Bandung Barat', 'islam', '02159309136', '2017-05-16', '2017-05-16', 'OutSourching', 4, '2017-05-16', 'Non Aktif', '2017-05-17', '-', '2017000013_ENY KUSRINI.jpg', '2017-05-15 11:05:53', '0000-00-00 00:00:00'),
 ('2017000014', '201383087', 'Rizki Muhammad', 'Tangerang', '1993-06-15', 'Laki Laki', 'Tangrang', 'islam', '02159309136', '2017-05-15', '2017-05-15', 'OutSourching', 5, '2017-05-16', 'Aktif', '2017-05-16', '-', '2017000014_jess.jpg', '2017-05-15 11:05:57', '0000-00-00 00:00:00'),
 ('2017000015', '201383087', 'Dwi Maulana', 'Jakarta', '1990-08-12', 'Perempuan', 'Jakarta Barat', 'islam', '02159309136', '2017-05-16', '2017-05-16', 'OutSourching', 5, '2017-05-16', 'Non Aktif', '2017-05-19', '-', '2017000015_jess.jpg', '2017-05-15 11:05:27', '0000-00-00 00:00:00'),
-('2017000016', '201383087', 'Kayas Mubarok', 'Cikupa ', '1991-06-14', 'Laki Laki', 'Cisoka Tangerang', 'islam', '02159309136', '2017-05-16', '2017-05-17', 'OutSourching', 5, '2017-05-09', 'Aktif', '2017-05-16', '-', '2017000016_AR EKA.jpg', '2017-05-15 11:05:39', '0000-00-00 00:00:00');
+('2017000016', '201383087', 'Kayas Mubarok', 'Cikupa ', '1991-06-14', 'Laki Laki', 'Cisoka Tangerang', 'islam', '02159309136', '2017-05-16', '2017-05-17', 'OutSourching', 5, '2017-05-09', 'Aktif', '2017-05-16', '-', '2017000016_AR EKA.jpg', '2017-05-15 11:05:39', '0000-00-00 00:00:00'),
+('2017000017', '201383087', 'Ahmad Rifai', 'Temanggung', '1992-06-13', 'Laki Laki', 'Temanggung Jawa Tengah', 'islam', '02159309136', '2017-05-17', '2017-05-17', 'OutSourching', 4, '2017-05-19', 'Pensiun', '2017-05-19', 'Non Aktif karena Pensiun', '2017000017_jess.jpg', '2017-05-16 05:05:59', '2017-05-16 05:05:56');
 
 -- --------------------------------------------------------
 
@@ -240,8 +247,18 @@ CREATE TABLE IF NOT EXISTS `peringatan` (
 --
 
 INSERT INTO `peringatan` (`id_peringatan`, `nik`, `tanggal`, `ke`, `keterangan`) VALUES
-('SP00001', '2017000001', '2017-05-11', '1', 'Telah melakukan pelanggaran dan perbaikana  Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana Telah melakukan pelanggaran dan perbaikana '),
-('SP00002', '2017000001', '2017-05-16', '1', '1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111');
+('SP00001', '2017000001', '2017-05-11', '1', '1. Kurangnya tenaga(tukang) sehingga beberapa item pekerjaan yang seharusnya sudah dilaksanakan ternyata belum dilaksanakan sampai saat ini.\r\n\r\n2. Tidak sesuainya durasi kerja seperti yang telah disepakati bersama di awal perjanjian.\r\n\r\nSelanjutnya kami instruksikan kepada Kontraktor agar segera berupaya memacu pekerjaan untuk mengejar keterlambatan pekerjaan tersebut dengan menambah tenaga (tukang) dan menyesuaikan durasi pekerjaan seperti yang telah tercantum pada surat perjanjian.'),
+('SP00002', '2017000001', '2017-05-16', '2', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n<br>\r\nTujuan Pengeluaran Surat Peringatan :\r\n<br>\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00003', '2017000001', '2017-05-17', '3', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00004', '2017000002', '2017-05-16', '1', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00005', '2017000003', '2017-05-16', '1', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00006', '2017000003', '2017-05-17', '2', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00007', '2017000006', '2017-05-17', '1', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00008', '2017000006', '2017-05-17', '1', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00009', '2017000007', '2017-05-17', '2', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00010', '2017000014', '2017-05-17', '1', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00011', '2017000015', '2017-05-16', '1', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.'),
+('SP00012', '2017000014', '2017-05-17', '1', 'Sebagai seorang karyawan Saudara Eka Ahmad Feri Setiawan seharusnya mampu mentaati tata tertib kerja yang berlaku di perusahaan ini dan bersedia untuk tiba di lokasi kerja pada waktu yang telah ditentukan, serta tidak diperkenankan untuk meninggalkan lokasi kerja sebelum berakhirnya waktu kerja sebagaimana yang telah tercantum dalam Surat Perjanjian Kerja (SPK) yang telah disepakati sebelumnya.\r\n\r\nTujuan Pengeluaran Surat Peringatan :\r\n\r\nTujuan dikeluarkannya surat peringatan ini adalah untuk memberikan pengarahan sekaligus peringatan kepada Saudara Eka Ahmad Feri Setiawan agar bersedia melaksanakan tata tertib yang berlaku di perusahaan ini dan tidak melakukan kesalahan yang dapat merugikan pihak perusahaan.');
 
 -- --------------------------------------------------------
 
@@ -269,7 +286,8 @@ INSERT INTO `sp_lembur` (`id_spl`, `tanggal`, `jam_awal`, `jam_akhir`, `tujuan`,
 ('SPL0000002', '2017-05-15', '17:00:00', '19:00:00', 'Membuat laporan SPT Tahunan badan                                           ', 'Hendri Mamang', 'Asisten Manager', 'Progress'),
 ('SPL0000003', '2017-05-14', '17:00:00', '20:00:00', 'Pembuatan Laporan Pajak SPT Tahunan yang akan segera di laporkan ', 'Rofiul Husna', 'Manager', 'Prosess'),
 ('SPL0000004', '2017-05-15', '17:00:00', '19:00:00', 'Pembuatan Laporan Pajak SPT Tahunan yang akan segera di laporkan ', 'Rofiul Husna', 'Spv', 'Prores'),
-('SPL0000005', '2017-05-15', '17:00:00', '19:00:00', 'untuk membuat gambar teknik berupa denah lokasi untuk tempat penyimpanan barang barang sementara ', 'Hendri Yulianto', 'SPV', 'Progress');
+('SPL0000005', '2017-05-15', '17:00:00', '19:00:00', 'untuk membuat gambar teknik berupa denah lokasi untuk tempat penyimpanan barang barang sementara ', 'Hendri Yulianto', 'SPV', 'Progress'),
+('SPL0000006', '2017-03-08', '17:00:00', '19:00:00', 'Membuat laporan keuangan perusahaan, untuk bahan laporan spt tahunan', 'Rudi Hermanto', 'Manager', '-');
 
 -- --------------------------------------------------------
 
@@ -390,12 +408,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `datafile`
 --
 ALTER TABLE `datafile`
-  MODIFY `kode_file` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `kode_file` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `data_lembur`
 --
 ALTER TABLE `data_lembur`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
